@@ -19,7 +19,7 @@ export default function App() {
 
           <Text style={styles.title}>Fitness Time</Text>
 
-          <Text style={styles.subtitle}>Your Virtual Gym Trainer</Text>
+          <Text style={styles.subtitle}>Your Virtual Gym Trainer!</Text>
 
 
 
