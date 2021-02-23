@@ -1,40 +1,40 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View,ImageBackground } from 'react-native';
+import {Camera} from 'expo-camera'
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
 
 export default function App() {
+
   return (
     <View style={styles.container}>
-
-      <View  style={styles.Bcontainer}>
-
-        <ImageBackground
-          source={require('./assets/images/image1.jpg')}
-          style={styles.image}
-
-          />
-
-        <View style={styles.titles}>
-
-
-          <Text style={styles.title}>Fitness Time</Text>
-
-          <Text style={styles.subtitle}>Your Virtual Gym Trainer!</Text>
-
-
-
-
-
-        </View>
-
-   
-      </View>
+      <View style={styles.secondView}>
+        <TouchableOpacity 
+         onPress={__startCamera}
+        style={styles.toucable}>
+          <Text style={styles.text}>Take Picture</Text>
+        </TouchableOpacity>
        
-
-
-      <StatusBar style="auto" />
+      </View>
     </View>
   );
+}
+const [startCamera,setStartCamera] = React.useState(false)
+
+const __startCamera = ()=>{
+
+  const __startCamera = async () => {
+    const {status} = await Camera.requestPermissionsAsync()
+    if (status === 'granted') {
+      // start the camera
+      setStartCamera(true)
+    } else {
+      Alert.alert('Access denied')
+    }
+  }
+
+
+
 }
 
 const styles = StyleSheet.create({
@@ -44,51 +44,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
-  Bcontainer:{
-
-      width:'100%',
-      height:'100%'
-
-  },
-
-  titles:{
-
-      marginTop:'30%',
-      width:'100%',
-      alignItems:'center',
-
+  secondView :{
+    flex: 1,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center'
 
   },
-
-
-  title:{
-
-    fontSize:40,
-    color:'yellow',
-    fontWeight:'bold'
-    
-
+  toucable:{
+    width: 130,
+    borderRadius: 4,
+    backgroundColor: '#14274e',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 40
   },
-
-
-  subtitle:{
-
-      fontSize:26,
-      color:'lightblue'
-    
+  text:{
+    color: '#fff',
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
-
-  image:{
-
-      width:'100%',
-      height:'100%',
-      resizeMode:'cover',
-      position:'absolute',
-
-  },
-
-
-
 
 });
