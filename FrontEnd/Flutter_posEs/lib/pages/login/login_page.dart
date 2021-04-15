@@ -5,6 +5,8 @@ import 'package:posees/models/user.dart';
 import 'package:posees/pages/login/login_presenter.dart';
 
 import '../../data/database_helper.dart';
+import '../home_page.dart';
+import '../home_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -47,7 +49,13 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
   Widget build(BuildContext context) {
     _ctx = context;
     var loginBtn = new RaisedButton(
-      onPressed: _submit,
+     // onPressed: _submit,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HomePage()),
+          );
+        },
       child: new Text("Login"),
       color: Colors.green,
     );
