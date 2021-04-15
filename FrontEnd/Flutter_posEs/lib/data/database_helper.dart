@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:io' as io;
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:posees/models/user.dart';
 
 import '../models/user.dart';
 
@@ -11,6 +12,14 @@ class DatabaseHelper {
   factory DatabaseHelper() => _instance;
 
   static Database _db;
+  final String tableUser = "User";
+  final String columnName = "name";
+  final String columnUserName = "username";
+  final String columnPassword = "password";
+  final String columnWeight = "weight";
+  final String columnGender = "gender";
+  final String columnAge = "age";
+
 
   Future<Database> get db async {
     if (_db != null) {

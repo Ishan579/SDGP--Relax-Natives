@@ -8,6 +8,8 @@ class User {
     this._username = obj['username'];
     this._password = obj['password'];
   }
+
+  User.name(String name, String username, String password, String weight, String gender, String age, param6);
   String get username => _username;
   String get password => _password;
 
