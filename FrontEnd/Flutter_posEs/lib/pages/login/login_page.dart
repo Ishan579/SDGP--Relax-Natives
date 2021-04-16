@@ -7,6 +7,7 @@ import 'package:posees/pages/login/login_presenter.dart';
 import '../../data/database_helper.dart';
 import '../home_page.dart';
 import '../home_page.dart';
+import 'package:posees/data/rest_data.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -38,6 +39,9 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       });
     }
   }
+ void _register() {
+    Navigator.of(context).pushNamed("/register");
+  }
 
   void _showSnackBar(String text) {
     ScaffoldKey.currentState.showSnackBar(new SnackBar(
@@ -45,10 +49,12 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
     ));
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     _ctx = context;
-    var loginBtn = new RaisedButton(
+    /*var loginBtn = new RaisedButton(
      // onPressed: _submit,
         onPressed: () {
           Navigator.push(
@@ -58,12 +64,30 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
         },
       child: new Text("Login"),
       color: Colors.green,
+    );*/
+    var loginBtn = new ElevatedButton(
+      style: ButtonStyle(
+        padding: MaterialStateProperty.all(EdgeInsets.fromLTRB(40.0, 10.0, 40.0, 10.0)),
+        backgroundColor: MaterialStateProperty.all(Colors.green),
+      ),
+      onPressed: _submit,
+      child: new Text("Login"),
+    );
+    
+
+    var register = new ElevatedButton(
+      style: ButtonStyle(
+        padding: MaterialStateProperty.all(EdgeInsets.fromLTRB(26.0, 10.0, 26.0, 10.0)),
+        backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
+      ),
+      onPressed: _register,
+      child: new Text("Register"),
     );
     var loginform = new Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         new Text(
-          "Sqflite App Login",
+          "Pose Estimation Pro",
           textScaleFactor: 2.0,
         ),
         new Form(
@@ -86,13 +110,20 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
                 )
               ],
             )),
-        loginBtn
+            
+        
+          new Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: loginBtn),
+        register,
+        
       ],
     );
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Login Page"),
       ),
+      
       key: ScaffoldKey,
       body: new Container(
         child: new Center(
@@ -122,4 +153,6 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
     await db.saveUser(user);
     Navigator.of(context).pushNamed("/home");
   }
+
+  
 }
