@@ -6,13 +6,12 @@ import 'package:posees/models/user.dart';
 //import '../../data/database_helper.dart';
 import 'package:posees/data/database_helper.dart';
 
-
 class RegisterPage extends StatefulWidget {
   @override
   _RegisterPageState createState() => new _RegisterPageState();
 }
 
-class _RegisterPageState  extends State<RegisterPage> {
+class _RegisterPageState extends State<RegisterPage> {
   BuildContext _ctx;
   final formKey = new GlobalKey<FormState>();
   final scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -24,13 +23,13 @@ class _RegisterPageState  extends State<RegisterPage> {
     _ctx = context;
     var registerBtn = new ElevatedButton(
       style: ButtonStyle(
-        padding: MaterialStateProperty.all(EdgeInsets.fromLTRB(26.0, 10.0, 26.0, 10.0)),
+        padding: MaterialStateProperty.all(
+            EdgeInsets.fromLTRB(26.0, 10.0, 26.0, 10.0)),
         backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
       ),
       onPressed: _submit,
       child: new Text("Register"),
     );
-
 
     var registerForm = new Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -88,7 +87,8 @@ class _RegisterPageState  extends State<RegisterPage> {
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Please enter your weight';
-                    }else if(int.parse(value) >= 150 || int.parse(value) < 20){
+                    } else if (int.parse(value) >= 150 ||
+                        int.parse(value) < 20) {
                       return 'Your weight should be between 20 - 150';
                     }
                     return null;
@@ -132,7 +132,8 @@ class _RegisterPageState  extends State<RegisterPage> {
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Please enter your age';
-                    }else if(int.parse(value) >= 60 || int.parse(value) < 18){
+                    } else if (int.parse(value) >= 60 ||
+                        int.parse(value) < 18) {
                       return 'Your age should be between 18 - 60';
                     }
                     return null;
@@ -142,8 +143,9 @@ class _RegisterPageState  extends State<RegisterPage> {
             ],
           ),
         ),
-        new Padding(padding: const EdgeInsets.fromLTRB(30.0, 1.0, 30.0, 30.0),
-        child: registerBtn,
+        new Padding(
+          padding: const EdgeInsets.fromLTRB(30.0, 1.0, 30.0, 30.0),
+          child: registerBtn,
         )
       ],
     );
@@ -163,12 +165,13 @@ class _RegisterPageState  extends State<RegisterPage> {
     );
   }
 
-  void _submit(){
+  void _submit() {
     final form = formKey.currentState;
     if (form.validate()) {
       setState(() {
         form.save();
-        var user = new User.name(_name, _username, _password, _weight, _gender, _age, null);
+        var user = new User.name(
+            _name, _username, _password, _weight, _gender, _age, null);
         var db = new DatabaseHelper();
         db.saveUser(user);
         scaffoldKey.currentState.showSnackBar(new SnackBar(
@@ -176,7 +179,7 @@ class _RegisterPageState  extends State<RegisterPage> {
         ));
         Future.delayed(const Duration(milliseconds: 1000), () {
           setState(() {
-            Navigator.of(context).pushNamed("/login_page");
+            Navigator.of(context).pushNamed("/login");
           });
         });
       });

@@ -39,7 +39,8 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       });
     }
   }
- void _register() {
+
+  void _register() {
     Navigator.of(context).pushNamed("/register");
   }
 
@@ -49,35 +50,33 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
     ));
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     _ctx = context;
-    /*var loginBtn = new RaisedButton(
-     // onPressed: _submit,
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => HomePage()),
-          );
-        },
+    var loginBtn = new RaisedButton(
+      // onPressed: _submit,
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
+      },
       child: new Text("Login"),
       color: Colors.green,
-    );*/
-    var loginBtn = new ElevatedButton(
+    );
+    /*  var loginBtn = new ElevatedButton(
       style: ButtonStyle(
         padding: MaterialStateProperty.all(EdgeInsets.fromLTRB(40.0, 10.0, 40.0, 10.0)),
         backgroundColor: MaterialStateProperty.all(Colors.green),
       ),
       onPressed: _submit,
       child: new Text("Login"),
-    );
-    
+    );*/
 
     var register = new ElevatedButton(
       style: ButtonStyle(
-        padding: MaterialStateProperty.all(EdgeInsets.fromLTRB(26.0, 10.0, 26.0, 10.0)),
+        padding: MaterialStateProperty.all(
+            EdgeInsets.fromLTRB(26.0, 10.0, 26.0, 10.0)),
         backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
       ),
       onPressed: _register,
@@ -110,20 +109,14 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
                 )
               ],
             )),
-            
-        
-          new Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: loginBtn),
+        new Padding(padding: const EdgeInsets.all(10.0), child: loginBtn),
         register,
-        
       ],
     );
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Login Page"),
       ),
-      
       key: ScaffoldKey,
       body: new Container(
         child: new Center(
@@ -153,6 +146,4 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
     await db.saveUser(user);
     Navigator.of(context).pushNamed("/home");
   }
-
-  
 }
