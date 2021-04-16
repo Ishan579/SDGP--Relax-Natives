@@ -3,7 +3,6 @@ import 'package:posees/pages/home_page.dart';
 import 'package:posees/pages/login/login_page.dart';
 import 'package:posees/pages/login/register.dart';
 
-
 void main() => runApp(new MyApp());
 
 final routes = {
@@ -20,7 +19,6 @@ class MyApp extends StatelessWidget {
       title: 'sqllite App',
       theme: new ThemeData(primarySwatch: Colors.teal),
       routes: routes,
-
     );
   }
 }
