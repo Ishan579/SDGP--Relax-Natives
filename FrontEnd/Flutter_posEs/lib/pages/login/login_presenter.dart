@@ -2,12 +2,12 @@ import '../../data/rest_data.dart';
 import '../../data/rest_data.dart';
 import '../../models/user.dart';
 
-abstract class LoginPageContract {
-  void onLoginSuccess(User user);
-  void onLoginError(String error);
-}
+//abstract class LoginPageContract {
+ // void onLoginSuccess(User user);
+ // void onLoginError(String error);
+//}
 
-class LoginPagePresenter {
+/*class LoginPagePresenter {
   LoginPageContract _view;
   RestData api = new RestData();
   LoginPagePresenter(this._view);
@@ -18,4 +18,4 @@ class LoginPagePresenter {
         .then((user) => _view.onLoginSuccess(user))
         .catchError((onError) => _view.onLoginError(onError));
   }
-}
+}*/

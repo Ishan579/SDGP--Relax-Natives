@@ -14,7 +14,7 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => new _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> implements LoginPageContract {
+class _LoginPageState extends State<LoginPage> implements LoginPageStatus {
   BuildContext _ctx;
   bool _isLoading = false;
   final formkey = new GlobalKey<FormState>();
@@ -22,10 +22,43 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
 
   String _username, _password;
 
-  LoginPagePresenter _presenter;
+  LoginPageHandler  _presenter;
 
   _LoginPageState() {
-    _presenter = new LoginPagePresenter(this);
+    _presenter = new LoginPageHandler (this);
+  }
+  
+  @override
+  void onLoginError(String error) {
+    // TODO: implement onLoginError
+    _showSnackBar(error);
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
+  @override
+  void onLoginSuccess(User user) async {
+    // TODO: implement onLoginSuccess
+    /* _showSnackBar(user.toString());
+    setState(() {
+      _isLoading = false;
+    });
+    var db = new DatabaseHelper();
+    await db.saveUser(user);
+   Navigator.of(context).pushNamed("/home");
+  }
+    }*/
+    if (user.flaglogged == "logged") {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MyHomePage(user: user,),
+          ));
+       Navigator.of(context).pushNamed("/home");
+    } else {
+      _showSnackBar("Invalid Username or Password");
+    }
   }
 
   void _submit() {
@@ -53,7 +86,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
   @override
   Widget build(BuildContext context) {
     _ctx = context;
-    var loginBtn = new RaisedButton(
+   /* var loginBtn = new RaisedButton(
       // onPressed: _submit,
       onPressed: () {
         Navigator.push(
@@ -63,15 +96,15 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       },
       child: new Text("Login"),
       color: Colors.green,
-    );
-    /*  var loginBtn = new ElevatedButton(
+    );*/
+      var loginBtn = new ElevatedButton(
       style: ButtonStyle(
         padding: MaterialStateProperty.all(EdgeInsets.fromLTRB(40.0, 10.0, 40.0, 10.0)),
         backgroundColor: MaterialStateProperty.all(Colors.green),
       ),
       onPressed: _submit,
       child: new Text("Login"),
-    );*/
+    );
 
     var register = new ElevatedButton(
       style: ButtonStyle(
@@ -126,24 +159,22 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
     );
   }
 
-  @override
-  void onLoginError(String error) {
-    // TODO: implement onLoginError
-    _showSnackBar(error);
-    setState(() {
-      _isLoading = false;
-    });
-  }
+}
 
-  @override
-  void onLoginSuccess(User user) async {
-    // TODO: implement onLoginSuccess
-    _showSnackBar(user.toString());
-    setState(() {
-      _isLoading = false;
-    });
-    var db = new DatabaseHelper();
-    await db.saveUser(user);
-    Navigator.of(context).pushNamed("/home");
+abstract class LoginPageStatus {
+  void onLoginSuccess(User user);
+  void onLoginError(String error);
+}
+
+class LoginPageHandler {
+  LoginPageStatus _view;
+  RestData api = new RestData();
+  LoginPageHandler(this._view);
+
+  doLogin(String username, String password) {
+    api
+        .login(username, password)
+        .then((user) => _view.onLoginSuccess(user))
+        .catchError((onError) => _view.onLoginError(onError));
   }
 }
