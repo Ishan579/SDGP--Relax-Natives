@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:posees/models/user.dart';
 import 'sample_videos.dart';
 import 'start_workout_page.dart';
 
@@ -20,8 +21,9 @@ class HomePage extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
+  final User user;
+  MyHomePage({Key key, this.title, this.user}) : super(key: key);
+ 
   final String title;
 
   @override
