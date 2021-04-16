@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'sample_videos.dart';
+import 'start_workout_page.dart';
 
 class HomePage extends StatelessWidget {
   // This widget is the root of your application.
@@ -67,6 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
+
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -85,7 +87,15 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: Text("sample videos Page"),
               color: Colors.lightBlueAccent,
-            )
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => startWorkout()));
+              },
+              child: Text("Start Workout!"),
+              color: Colors.lightBlueAccent,
+            ),
           ],
         ),
       ),
