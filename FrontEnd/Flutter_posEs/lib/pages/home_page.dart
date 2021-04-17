@@ -75,11 +75,6 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             //_image != null ? Image.file(_image) : Icon(Icons.image, size: 100),
-            Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("lib/images/pic3.jpg"),
-                        fit: BoxFit.cover))),
             RaisedButton(
               child: Text("Capture"),
               onPressed: takePicture,
