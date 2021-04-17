@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   final User user;
   MyHomePage({Key key, this.title, this.user}) : super(key: key);
- 
+
   final String title;
 
   @override
@@ -70,16 +70,21 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            _image != null ? Image.file(_image) : Icon(Icons.image, size: 100),
+            //_image != null ? Image.file(_image) : Icon(Icons.image, size: 100),
+            Container(
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("lib/images/pic3.jpg"),
+                        fit: BoxFit.cover))),
             RaisedButton(
               child: Text("Capture"),
               onPressed: takePicture,
             ),
+
             RaisedButton(
               onPressed: () {
                 Navigator.push(

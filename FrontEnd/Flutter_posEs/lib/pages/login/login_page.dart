@@ -22,12 +22,12 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
 
   String _username, _password;
 
-  LoginPagePresenter  _presenter;
+  LoginPagePresenter _presenter;
 
   _LoginPageState() {
-    _presenter = new LoginPagePresenter (this);
+    _presenter = new LoginPagePresenter(this);
   }
-  
+
   @override
   void onLoginError(String error) {
     // TODO: implement onLoginError
@@ -36,7 +36,6 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       _isLoading = false;
     });
   }
-  
 
   @override
   void onLoginSuccess(User user) async {
@@ -54,9 +53,11 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => MyHomePage(user: user,),
+            builder: (context) => MyHomePage(
+              user: user,
+            ),
           ));
-       Navigator.of(context).pushNamed("/home");
+      Navigator.of(context).pushNamed("/home");
     } else {
       _showSnackBar("Invalid Username or Password");
     }
@@ -83,12 +84,11 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       content: new Text(text),
     ));
   }
-  
 
   @override
   Widget build(BuildContext context) {
     _ctx = context;
-   /* var loginBtn = new RaisedButton(
+    var loginBtn = new RaisedButton(
       // onPressed: _submit,
       onPressed: () {
         Navigator.push(
@@ -98,15 +98,16 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       },
       child: new Text("Login"),
       color: Colors.green,
-    );*/
-      var loginBtn = new ElevatedButton(
+    );
+    /*var loginBtn = new ElevatedButton(
       style: ButtonStyle(
-        padding: MaterialStateProperty.all(EdgeInsets.fromLTRB(40.0, 10.0, 40.0, 10.0)),
+        padding: MaterialStateProperty.all(
+            EdgeInsets.fromLTRB(40.0, 10.0, 40.0, 10.0)),
         backgroundColor: MaterialStateProperty.all(Colors.green),
       ),
       onPressed: _submit,
       child: new Text("Login"),
-    );
+    ); */
 
     var register = new ElevatedButton(
       style: ButtonStyle(
@@ -160,7 +161,6 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       ),
     );
   }
-
 }
 
 /*abstract class LoginPageStatus {

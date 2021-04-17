@@ -6,6 +6,11 @@ class sampleVideosPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Sample Workout videos")),
+      body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("lib/images/pic3.jpg"), fit: BoxFit.cover)),
+      ),
     );
   }
 }

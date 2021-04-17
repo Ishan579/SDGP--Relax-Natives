@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:tflite/tflite.dart';
 import 'package:image_picker/image_picker.dart';
 
-
 void main() {
   runApp(startWorkout());
 }
@@ -45,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
   //TODO chose image from camera
   _imgFromCamera() async {
     PickedFile pickedFile =
-    await imagePicker.getImage(source: ImageSource.camera);
+        await imagePicker.getImage(source: ImageSource.camera);
     File image = File(pickedFile.path);
     predictImage(image);
   }
@@ -53,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
   //TODO chose image gallery
   _imgFromGallery() async {
     PickedFile pickedFile =
-    await imagePicker.getImage(source: ImageSource.gallery);
+        await imagePicker.getImage(source: ImageSource.gallery);
     File image = File(pickedFile.path);
     predictImage(image);
   }
@@ -149,7 +148,16 @@ class _MyHomePageState extends State<MyHomePage> {
       top: 0.0,
       left: 0.0,
       width: size.width,
-      child: _image == null ? Center(child: Container(margin:EdgeInsets.only(top:size.height/2-140),child: Icon(Icons.image_rounded,color: Colors.white,size: 100,))) : Image.file(_image),
+      child: _image == null
+          ? Center(
+              child: Container(
+                  margin: EdgeInsets.only(top: size.height / 2 - 140),
+                  child: Icon(
+                    Icons.image_rounded,
+                    color: Colors.white,
+                    size: 100,
+                  )))
+          : Image.file(_image),
     ));
     //TODO draw points
     stackChildren.addAll(renderKeypoints(size));
