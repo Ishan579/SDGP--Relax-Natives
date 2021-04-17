@@ -14,7 +14,7 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => new _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> implements LoginPageStatus {
+class _LoginPageState extends State<LoginPage> implements LoginPageContract {
   BuildContext _ctx;
   bool _isLoading = false;
   final formkey = new GlobalKey<FormState>();
@@ -22,10 +22,10 @@ class _LoginPageState extends State<LoginPage> implements LoginPageStatus {
 
   String _username, _password;
 
-  LoginPageHandler  _presenter;
+  LoginPagePresenter  _presenter;
 
   _LoginPageState() {
-    _presenter = new LoginPageHandler (this);
+    _presenter = new LoginPagePresenter (this);
   }
   
   @override
@@ -36,6 +36,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageStatus {
       _isLoading = false;
     });
   }
+  
 
   @override
   void onLoginSuccess(User user) async {
@@ -82,6 +83,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageStatus {
       content: new Text(text),
     ));
   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -161,7 +163,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageStatus {
 
 }
 
-abstract class LoginPageStatus {
+/*abstract class LoginPageStatus {
   void onLoginSuccess(User user);
   void onLoginError(String error);
 }
@@ -177,4 +179,4 @@ class LoginPageHandler {
         .then((user) => _view.onLoginSuccess(user))
         .catchError((onError) => _view.onLoginError(onError));
   }
-}
+}*/
