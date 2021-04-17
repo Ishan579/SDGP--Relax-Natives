@@ -9,7 +9,7 @@ class sampleVideosPage extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("lib/images/pic3.jpg"), fit: BoxFit.cover)),
+                image: AssetImage("lib/images/pic4.jpg"), fit: BoxFit.cover)),
       ),
     );
   }

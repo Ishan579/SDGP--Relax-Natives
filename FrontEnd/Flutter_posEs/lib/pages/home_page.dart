@@ -70,38 +70,43 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            //_image != null ? Image.file(_image) : Icon(Icons.image, size: 100),
-            RaisedButton(
-              child: Text("Capture"),
-              onPressed: takePicture,
-            ),
-
-            RaisedButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => sampleVideosPage()));
-              },
-              child: Text("sample videos Page"),
-              color: Colors.lightBlueAccent,
-            ),
-            RaisedButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => startWorkout()));
-              },
-              child: Text("Start Workout!"),
-              color: Colors.lightBlueAccent,
-            ),
-          ],
+      body: Container(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              // _image != null
+              //    ? Image.file(_image)
+              //   : Icon(Icons.image, size: 100),
+              RaisedButton(
+                  child: Text("Capture"),
+                  onPressed: takePicture,
+                  color: Colors.lightBlue[50]),
+              RaisedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => sampleVideosPage()));
+                },
+                child: Text("sample videos Page"),
+                color: Colors.lightBlue[50],
+              ),
+              RaisedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => startWorkout()));
+                },
+                child: Text("Start Workout!"),
+                color: Colors.lightBlue[50],
+              ),
+            ],
+          ),
         ),
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("lib/images/pic3.jpg"), fit: BoxFit.cover)),
       ),
-      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
