@@ -14,6 +14,8 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => new _LoginPageState();
 }
 
+bool _secureText = true;
+
 class _LoginPageState extends State<LoginPage> implements LoginPageContract {
   BuildContext _ctx;
   bool _isLoading = false;
@@ -88,7 +90,13 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
   @override
   Widget build(BuildContext context) {
     _ctx = context;
-    var loginBtn = new RaisedButton(
+    var loginBtn = new ElevatedButton(
+      style: ButtonStyle(
+        padding: MaterialStateProperty.all(
+            EdgeInsets.fromLTRB(26.0, 10.0, 26.0, 10.0)),
+        backgroundColor: MaterialStateProperty.all(Colors.blue[700]),
+      ),
+
       // onPressed: _submit,
       onPressed: () {
         Navigator.push(
@@ -97,7 +105,6 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
         );
       },
       child: new Text("Login"),
-      color: Colors.green,
     );
     /*var loginBtn = new ElevatedButton(
       style: ButtonStyle(
@@ -113,7 +120,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       style: ButtonStyle(
         padding: MaterialStateProperty.all(
             EdgeInsets.fromLTRB(26.0, 10.0, 26.0, 10.0)),
-        backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
+        backgroundColor: MaterialStateProperty.all(Colors.blue[700]),
       ),
       onPressed: _register,
       child: new Text("Register"),
@@ -121,9 +128,17 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
     var loginform = new Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        new Text(
-          "Pose Estimation Pro",
-          textScaleFactor: 2.0,
+        new Padding(
+          padding: const EdgeInsets.all(45),
+          child: Text(
+            "Pose Estimation Pro",
+            style: new TextStyle(
+                color: Colors.black,
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.bold),
+            textAlign: TextAlign.right,
+            textScaleFactor: 2.0,
+          ),
         ),
         new Form(
             key: formkey,
@@ -133,14 +148,35 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
                   padding: const EdgeInsets.all(10.0),
                   child: new TextFormField(
                     onSaved: (val) => _username = val,
-                    decoration: new InputDecoration(labelText: "Username"),
+                    decoration: new InputDecoration(
+                        hintText: "User Name",
+                        labelText: "Username",
+                        labelStyle:
+                            TextStyle(fontSize: 17, color: Colors.white),
+                        border: OutlineInputBorder()),
                   ),
                 ),
                 new Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: new TextFormField(
                     onSaved: (val) => _password = val,
-                    decoration: new InputDecoration(labelText: "Password"),
+                    decoration: new InputDecoration(
+                        hintText: "Password",
+                        labelText: "Password",
+                        labelStyle:
+                            TextStyle(fontSize: 17, color: Colors.white),
+                        border: OutlineInputBorder(),
+                        suffixIcon: IconButton(
+                          icon: Icon(_secureText
+                              ? Icons.remove_red_eye
+                              : Icons.security),
+                          onPressed: () {
+                            setState(() {
+                              _secureText = !_secureText;
+                            });
+                          },
+                        )),
+                    obscureText: _secureText,
                   ),
                 )
               ],
@@ -150,11 +186,12 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       ],
     );
     return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Login Page"),
-      ),
       key: ScaffoldKey,
       body: new Container(
+        constraints: BoxConstraints.expand(),
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("lib/images/gym2.jpg"), fit: BoxFit.cover)),
         child: new Center(
           child: loginform,
         ),
