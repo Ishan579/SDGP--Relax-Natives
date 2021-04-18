@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:posees/models/user.dart';
+import 'package:posees/pages/pushed_pageY.dart';
 import 'sample_videos.dart';
 import 'start_workout_page.dart';
 
@@ -92,6 +93,23 @@ class _MyHomePageState extends State<MyHomePage> {
                           builder: (context) => sampleVideosPage()));
                 },
                 child: Text("Train Now"),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                    onPrimary: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(25))),
+                    textStyle:
+                    TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PushedPageY()));
+                },
+                child: Text("Train Warrier Pose"),
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(

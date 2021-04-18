@@ -93,7 +93,9 @@ class _MyHomePageState extends State<MyHomePage> {
     int startTime = new DateTime.now().millisecondsSinceEpoch;
     var recognitions = await Tflite.runPoseNetOnImage(
       path: image.path,
-      numResults: 2,
+      numResults: 1,
+      threshold: 0.1,
+      nmsRadius: 10,
     );
 
     print(recognitions);
