@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class RenderDataYoga extends StatefulWidget {
-  final List<dynamic> data;//keypoints
-  final int previewH;//image height (cam image)
-  final int previewW;//image width (cam image)
-  final double screenH;//screen height
-  final double screenW;//screen height
+  final List<dynamic> data; //keypoints
+  final int previewH; //image height (cam image)
+  final int previewW; //image width (cam image)
+  final double screenH; //screen height
+  final double screenW; //screen height
 
   RenderDataYoga(
       {this.data, this.previewH, this.previewW, this.screenH, this.screenW});
@@ -242,14 +242,14 @@ class _RenderDataYogaState extends State<RenderDataYoga> {
             width: 100,
             height: 15,
             child: Container(
-              // child: Text(
-              //   "● ${k["part"]}",
-              //   style: TextStyle(
-              //     color: Color.fromRGBO(37, 213, 253, 1.0),
-              //     fontSize: 12.0,
-              //   ),
-              // ),
-            ),
+                // child: Text(
+                //   "● ${k["part"]}",
+                //   style: TextStyle(
+                //     color: Color.fromRGBO(37, 213, 253, 1.0),
+                //     fontSize: 12.0,
+                //   ),
+                // ),
+                ),
           );
         }).toList();
 
