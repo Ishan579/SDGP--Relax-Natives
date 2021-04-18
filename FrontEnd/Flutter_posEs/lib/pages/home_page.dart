@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Home Page'),
+      home: MyHomePage(title: 'Lets Begin'),
     );
   }
 }
@@ -67,9 +67,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: Container(
         child: Center(
           child: Column(
@@ -78,27 +75,38 @@ class _MyHomePageState extends State<MyHomePage> {
               // _image != null
               //    ? Image.file(_image)
               //   : Icon(Icons.image, size: 100),
-              RaisedButton(
-                  child: Text("Capture"),
-                  onPressed: takePicture,
-                  color: Colors.lightBlue[50]),
-              RaisedButton(
+
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                    onPrimary: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(25))),
+                    textStyle:
+                        TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
                 onPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => sampleVideosPage()));
                 },
-                child: Text("sample videos Page"),
-                color: Colors.lightBlue[50],
+                child: Text("Train Now"),
               ),
-              RaisedButton(
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                    onPrimary: Colors.black,
+                    padding: EdgeInsets.all(20),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(30))),
+                    textStyle:
+                        TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => startWorkout()));
                 },
                 child: Text("Start Workout!"),
-                color: Colors.lightBlue[50],
               ),
             ],
           ),
