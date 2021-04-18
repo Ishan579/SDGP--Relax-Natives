@@ -102,12 +102,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(25))),
                     textStyle:
-                    TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                        TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => PushedPageY()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => PushedPageY()));
                 },
                 child: Text("Train Warrier Pose"),
               ),
