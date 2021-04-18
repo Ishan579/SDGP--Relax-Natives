@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:camera/camera.dart';
+import 'package:posees/pages/pushed_pageA.dart';
 import 'package:posees/pages/pushed_pageY.dart';
 
 //Takes a list of cameras in the device: front[0] back camera[1]
@@ -69,12 +70,17 @@ class startWorkout extends StatelessWidget {
 
       //home: MainScreen(cameras),
 
+
+
     ]
     )
     )
     )
         );
+
+        
   }
+  
   }
 
 
