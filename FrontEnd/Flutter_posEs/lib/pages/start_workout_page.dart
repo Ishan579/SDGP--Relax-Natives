@@ -69,6 +69,34 @@ class startWorkout extends StatelessWidget {
 
 
       //home: MainScreen(cameras),
+ElevatedButton(
+    style: ElevatedButton.styleFrom(
+        primary: Colors.white,
+        onPrimary: Colors.black,
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(25))),
+        textStyle:
+        TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+    onPressed: () {
+    Navigator.push(
+    context,
+    MaterialPageRoute(
+    builder: (context) => PushedPageA(
+    cameras: cameras,
+    title: 'Arm Press ',
+    ),
+    ),
+    );
+
+
+
+
+
+
+    },
+    child: Text("Train Arm Press Now"),
+    ),
 
 
 

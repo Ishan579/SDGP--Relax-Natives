@@ -213,4 +213,166 @@ class _RenderDataArmPressState extends State<RenderDataArmPress> {
       }
     }
 
-  
+   List<Widget> _renderKeypoints() {
+      var lists = <Widget>[];
+      widget.data.forEach((re) {
+        var list = re["keypoints"].values.map<Widget>((k) {
+          var _x = k["x"];
+          var _y = k["y"];
+          var scaleW, scaleH, x, y;
+
+          if (widget.screenH / widget.screenW >
+              widget.previewH / widget.previewW) {
+            scaleW = widget.screenH / widget.previewH * widget.previewW;
+            scaleH = widget.screenH;
+            var difW = (scaleW - widget.screenW) / scaleW;
+            x = (_x - difW / 2) * scaleW;
+            y = _y * scaleH;
+          } else {
+            scaleH = widget.screenW / widget.previewW * widget.previewH;
+            scaleW = widget.screenW;
+            var difH = (scaleH - widget.screenH) / scaleH;
+            x = _x * scaleW;
+            y = (_y - difH / 2) * scaleH;
+          }
+          inputArr[k['part']] = [x, y];
+          //Mirroring
+          if (x > 320) {
+            var temp = x - 320;
+            x = 320 - temp;
+          } else {
+            var temp = 320 - x;
+            x = 320 + temp;
+          }
+
+          _getKeyPoints(k, x, y);
+
+          if (k["part"] == 'leftEye') {
+            leftEyePos.x = x - 230;
+            leftEyePos.y = y - 45;
+          }
+          if (k["part"] == 'rightEye') {
+            rightEyePos.x = x - 230;
+            rightEyePos.y = y - 45;
+          }
+          return Positioned(
+            left: x - 230,
+            top: y - 50,
+            width: 100,
+            height: 15,
+            child: Container(
+                // child: Text(
+                //   "● ${k["part"]}",
+                //   style: TextStyle(
+                //     color: Color.fromRGBO(37, 213, 253, 1.0),
+                //     fontSize: 12.0,
+                //   ),
+                // ),
+                ),
+          );
+        }).toList();
+
+        _countingLogic(inputArr);
+        inputArr.clear();
+
+        lists..addAll(list);
+      });
+      //lists.clear();
+
+      return lists;
+    }
+
+    return Stack(
+      children: <Widget>[
+        Stack(
+          children: [
+            CustomPaint(
+              painter:
+                  MyPainter(left: leftShoulderPos, right: rightShoulderPos),
+            ),
+            CustomPaint(
+              painter: MyPainter(left: leftElbowPos, right: leftShoulderPos),
+            ),
+            CustomPaint(
+              painter: MyPainter(left: leftWristPos, right: leftElbowPos),
+            ),
+            CustomPaint(
+              painter: MyPainter(left: rightElbowPos, right: rightShoulderPos),
+            ),
+            CustomPaint(
+              painter: MyPainter(left: rightWristPos, right: rightElbowPos),
+            ),
+            CustomPaint(
+              painter: MyPainter(left: leftShoulderPos, right: leftHipPos),
+            ),
+            CustomPaint(
+              painter: MyPainter(left: leftHipPos, right: leftKneePos),
+            ),
+            CustomPaint(
+              painter: MyPainter(left: leftKneePos, right: leftAnklePos),
+            ),
+            CustomPaint(
+              painter: MyPainter(left: rightShoulderPos, right: rightHipPos),
+            ),
+            CustomPaint(
+              painter: MyPainter(left: rightHipPos, right: rightKneePos),
+            ),
+            CustomPaint(
+              painter: MyPainter(left: rightKneePos, right: rightAnklePos),
+            ),
+            CustomPaint(
+              painter: MyPainter(left: leftHipPos, right: rightHipPos),
+            ),
+          ],
+        ),
+        Stack(children: _renderKeypoints()),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            height: 50,
+            width: widget.screenW,
+            decoration: BoxDecoration(
+              color: correctColor,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(25.0),
+                  topRight: Radius.circular(25)),
+            ),
+            child: Column(
+              children: [
+                Text(
+                  '$whatToDo\nArm Presses: ${_counter.toString()}',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class Vector {
+  double x, y;
+  Vector(this.x, this.y);
+}
+
+class MyPainter extends CustomPainter {
+  Vector left;
+  Vector right;
+  MyPainter({this.left, this.right});
+  @override
+  void paint(Canvas canvas, Size size) {
+    final p1 = Offset(left.x, left.y);
+    final p2 = Offset(right.x, right.y);
+    final paint = Paint()
+      ..color = Colors.blue
+      ..strokeWidth = 4;
+    canvas.drawLine(p1, p2, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter old) {
+    return false;
+  }
+}
