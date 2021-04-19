@@ -26,7 +26,13 @@ class startWorkout extends StatelessWidget {
   Widget build(BuildContext context) {
     loadcams();
     return Scaffold(
+        appBar: AppBar(
+        title: Text('Start Workout'),
+        ),
         body: Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("lib/images/pic1.jpg"), fit: BoxFit.cover)),
             child: Center(
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -37,8 +43,9 @@ class startWorkout extends StatelessWidget {
 
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-                primary: Colors.white,
-                onPrimary: Colors.black,
+                primary: Colors.teal,
+                onPrimary: Colors.white,
+                onSurface: Colors.grey,
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25))),
@@ -55,14 +62,15 @@ class startWorkout extends StatelessWidget {
                 ),
               );
             },
-            child: Text("Train Pose Now"),
+            child: Text("Train Warrier Pose Now"),
           ),
 
           //home: MainScreen(cameras),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-                primary: Colors.white,
-                onPrimary: Colors.black,
+                primary: Colors.teal,
+                onPrimary: Colors.white,
+                onSurface: Colors.grey,
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25))),
@@ -83,8 +91,9 @@ class startWorkout extends StatelessWidget {
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-                primary: Colors.white,
-                onPrimary: Colors.black,
+                primary: Colors.teal,
+                onPrimary: Colors.white,
+                onSurface: Colors.grey,
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25))),
@@ -102,7 +111,9 @@ class startWorkout extends StatelessWidget {
               );
             },
             child: Text("Train Squat Now"),
+
           ),
         ]))));
   }
+
 }
