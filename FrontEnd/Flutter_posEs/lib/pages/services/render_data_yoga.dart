@@ -88,6 +88,18 @@ class _RenderDataYogaState extends State<RenderDataYoga> {
         rightWristX > 160) {
       wristAlignment = true;
       setState(() {
+               print("leftWristY should be "+"greater than 120");
+          print("leftWristY is "+  leftWristX.toString() );
+          print("  rightWristY should be "+"greater than 120");
+          print("  rightWristY is "+  rightWristY.toString() );
+          print("  leftWristX should be "+"less than 255");
+          print(" leftWristX "+ leftWristX.toString() );
+          print("leftWristX should be "+"greater than 200");
+          print("leftWristX is "+leftWristX.toString() );
+          print("rightWristX should be "+"less than 255");
+          print("rightWristX is "+    rightWristX.toString() );
+          print("   rightWristX should be "+"greater than 160");
+          print("   rightWristX is "+ rightWristX.toString() );
         armColor = Colors.green;
         shoulderColor = Colors.green;
       });
