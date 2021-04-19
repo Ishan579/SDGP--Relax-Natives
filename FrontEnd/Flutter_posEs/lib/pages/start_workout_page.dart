@@ -43,7 +43,7 @@ class startWorkout extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25))),
                 textStyle:
-                    TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                    TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
             onPressed: () {
               Navigator.push(
                 context,
@@ -67,7 +67,7 @@ class startWorkout extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25))),
                 textStyle:
-                    TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                    TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
             onPressed: () {
               Navigator.push(
                 context,
@@ -89,7 +89,7 @@ class startWorkout extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25))),
                 textStyle:
-                    TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                    TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
             onPressed: () {
               Navigator.push(
                 context,
