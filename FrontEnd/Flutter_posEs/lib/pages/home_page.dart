@@ -80,8 +80,6 @@ class _MyHomePageState extends State<MyHomePage> {
               //    ? Image.file(_image)
               //   : Icon(Icons.image, size: 100),
 
-
-
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     primary: Colors.teal,
@@ -96,11 +94,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => VideoHomePage()));
                 },
-                child: Text("Train Now"),
+                child: Text("Workout Guide"),
               ),
-
-
-
 
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -118,9 +113,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 child: Text("Train Warrier Pose"),
               ),
-
-
-
 
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -146,16 +138,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text("Train Arm Press Now"),
               ),
 
-
-
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     primary: Colors.teal,
                     onPrimary: Colors.white,
                     onSurface: Colors.grey,
-
                     elevation: 5,
-
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(25))),

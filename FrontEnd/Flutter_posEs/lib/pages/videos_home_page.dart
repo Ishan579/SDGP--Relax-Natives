@@ -23,40 +23,40 @@ class VideoPage extends State<VideoHomePage> {
             children: <Widget>[
               RaisedButton(
                 onPressed: () {
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => stretchPage()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => stretchPage()));
                 },
                 child: Text("Let's stretch first!"),
                 color: Colors.blue[50],
               ),
               RaisedButton(
                 onPressed: () {
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => squatPage()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => squatPage()));
                 },
                 child: Text("Squats"),
                 color: Colors.blue[100],
               ),
               RaisedButton(
                 onPressed: () {
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => crunchesPage()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => crunchesPage()));
                 },
                 child: Text("Crunches"),
                 color: Colors.blue[200],
               ),
               RaisedButton(
                 onPressed: () {
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => burpeesPage()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => burpeesPage()));
                 },
                 child: Text("Burpees"),
                 color: Colors.blue[300],
               ),
               RaisedButton(
                 onPressed: () {
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => lungesPage()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => lungesPage()));
                 },
                 child: Text("Lunges"),
                 color: Colors.blue[400],
