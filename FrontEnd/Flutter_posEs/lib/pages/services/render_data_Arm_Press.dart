@@ -95,6 +95,22 @@ class _RenderDataArmPressState extends State<RenderDataArmPress> {
     if (_postureAccordingToExercise(poses)) {
       if (!isCorrectPosture) {
         setState(() {
+          print("Wrist LX should be "+"greater than 280");
+          print("Wrist LX is "+wristLX.toString() );
+          print("elbow LX should be "+"greater than 280");
+          print("elbow LX is "+elbowLX.toString() );
+          print("Wrist RX should be "+"greater than 95");
+          print("Wrist RX is "+wristLX.toString() );
+          print("elbow RX should be "+"greater than 95");
+          print("elbow RX is "+elbowLX.toString() );
+          print("Wrist LY should be "+"greater than 240");
+          print("Wrist LY is "+wristLX.toString() );
+          print("elbow LY should be "+"greater than 200");
+          print("elbow LY is "+elbowLX.toString() );
+          print("Wrist RY should be "+"greater than 240");
+          print("Wrist RY is "+wristLX.toString() );
+          print("elbow RY should be "+"greater than 200");
+          print("elbow RY is "+elbowLX.toString() );
           isCorrectPosture = true;
           correctColor = Colors.green;
         });
