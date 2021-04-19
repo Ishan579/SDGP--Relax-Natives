@@ -26,16 +26,22 @@ class VideoPage extends State<VideoHomePage> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => stretchPage()));
                 },
-                child: Text("Let's stretch first!"),
-                color: Colors.blue[50],
+                child: Text("Stretch"),
+                color: Colors.teal,
+                textColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(25))),
               ),
               RaisedButton(
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => squatPage()));
                 },
-                child: Text("Squats"),
-                color: Colors.blue[100],
+                child: Text("      Squats      "),
+                color: Colors.teal,
+                textColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(25))),
               ),
               RaisedButton(
                 onPressed: () {
@@ -43,15 +49,21 @@ class VideoPage extends State<VideoHomePage> {
                       MaterialPageRoute(builder: (context) => crunchesPage()));
                 },
                 child: Text("Crunches"),
-                color: Colors.blue[200],
+                color: Colors.teal,
+                textColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(25))),
               ),
               RaisedButton(
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => burpeesPage()));
                 },
-                child: Text("Burpees"),
-                color: Colors.blue[300],
+                child: Text("      Burpees     "),
+                color: Colors.teal,
+                textColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(25))),
               ),
               RaisedButton(
                 onPressed: () {
@@ -59,7 +71,10 @@ class VideoPage extends State<VideoHomePage> {
                       MaterialPageRoute(builder: (context) => lungesPage()));
                 },
                 child: Text("Lunges"),
-                color: Colors.blue[400],
+                color: Colors.teal,
+                textColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(25))),
               ),
             ],
           ),

@@ -100,7 +100,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       onPressed: _submit,
       child: new Text("Login"),
     );
-   
+
 
 
     var register = new ElevatedButton(
