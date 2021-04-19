@@ -120,7 +120,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
           child: Text(
             "Pose Estimation Pro",
             style: new TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontStyle: FontStyle.italic,
                 fontWeight: FontWeight.bold),
             textAlign: TextAlign.right,
@@ -178,7 +178,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
         constraints: BoxConstraints.expand(),
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("lib/images/gym2.jpg"), fit: BoxFit.cover)),
+                image: AssetImage("lib/images/pic5.jpg"), fit: BoxFit.cover)),
         child: new Center(
           child: loginform,
         ),
