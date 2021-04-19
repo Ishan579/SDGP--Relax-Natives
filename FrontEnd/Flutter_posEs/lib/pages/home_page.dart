@@ -7,6 +7,7 @@ import 'package:posees/pages/pushed_pageS.dart';
 import 'package:posees/pages/pushed_pageA.dart';
 import 'package:posees/pages/pushed_pageY.dart';
 import 'sample_videos.dart';
+import 'videos_home_page.dart';
 import 'start_workout_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -89,10 +90,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     textStyle:
                         TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => sampleVideosPage()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => VideoHomePage()));
                 },
                 child: Text("Train Now"),
               ),
