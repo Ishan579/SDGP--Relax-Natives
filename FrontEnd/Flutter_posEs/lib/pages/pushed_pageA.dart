@@ -3,15 +3,15 @@ import 'package:camera/camera.dart';
 import 'package:tflite/tflite.dart';
 import 'dart:math';
 
-//import 'package:align_ai/services/camera.dart';
+//import 'package:align_ai/services/extract_keypoints.dart';
 //import 'package:align_ai/services/render_data.dart';
 //import 'package:align_ai/services/render_data_yoga.dart';
 //import 'package:align_ai/services/render_data_arm_press.dart';
 
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
-import 'package:posees/pages/services/camera.dart';
-import 'package:posees/pages/services/render_data_Arm_Press.dart';
+import 'package:posees/pages/services/extract_keypoints.dart';
+import 'package:posees/pages/services/render_shoulder_press.dart';
 import 'package:tflite/tflite.dart';
 import 'dart:math';
 
@@ -63,16 +63,16 @@ class _PushedPageAState extends State<PushedPageA> {
       ),
       body: Stack(
         children: <Widget>[
-          Camera(
+          ExtractKeypoints(
             cameras: widget.cameras,
             setRecognitions: _setRecognitions,
           ),
-          RenderDataArmPress(
-            data: _data == null ? [] : _data,
-            previewH: max(_imageHeight, _imageWidth),
-            previewW: min(_imageHeight, _imageWidth),
-            screenH: screen.height,
-            screenW: screen.width,
+          RenderShoulderPress(
+            xyPointsArray: _data == null ? [] : _data,
+            imageHeight: max(_imageHeight, _imageWidth),
+            imageWidth: min(_imageHeight, _imageWidth),
+            screenHeight: screen.height,
+            screenWidth: screen.width,
           ),
         ],
       ),

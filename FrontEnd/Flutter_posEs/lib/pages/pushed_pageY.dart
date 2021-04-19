@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
-import 'package:posees/pages/services/camera.dart';
+import 'package:posees/pages/services/extract_keypoints.dart';
 import 'package:posees/pages/services/render_data_yoga.dart';
 import 'package:tflite/tflite.dart';
 import 'dart:math';
@@ -55,7 +55,7 @@ class _PushedPageYState extends State<PushedPageY> {
       ),
       body: Stack(
         children: <Widget>[
-          Camera(
+          ExtractKeypoints(
             cameras: widget.cameras,
             setRecognitions: _setRecognitions,
           ),

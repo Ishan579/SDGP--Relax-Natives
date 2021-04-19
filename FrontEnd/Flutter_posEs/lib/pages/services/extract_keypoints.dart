@@ -6,19 +6,19 @@ import 'dart:math' as math;
 // a pointer to a function similar to the specified format
 typedef void Callback(List<dynamic> list, int h, int w);
 
-class Camera extends StatefulWidget {
+class  ExtractKeypoints extends StatefulWidget {
 
   //A list holding cameras
   final List<CameraDescription> cameras;
   final Callback setRecognitions;//data list , height and width integers
 
-  Camera({this.cameras, this.setRecognitions});
+  ExtractKeypoints({this.cameras, this.setRecognitions});
 
   @override
-  _CameraState createState() => new _CameraState();
+  _ExtractKeypointsState createState() => new _ExtractKeypointsState();
 }
 
-class _CameraState extends State<Camera> {
+class _ExtractKeypointsState extends State<ExtractKeypoints> {
   //Camera Controller from Dart Camera Class
   CameraController controller;
   //Says no image is not detected
@@ -61,7 +61,7 @@ class _CameraState extends State<Camera> {
 
             ).then((recognitions) {
               int endTime = new DateTime.now().millisecondsSinceEpoch;
-              print("Detection took ${endTime - startTime}");
+              print("Detection time : ${endTime - startTime}");
               //    print(recognitions);
 
               widget.setRecognitions(recognitions, img.height, img.width);
