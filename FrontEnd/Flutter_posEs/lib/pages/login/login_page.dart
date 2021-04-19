@@ -90,23 +90,8 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
   @override
   Widget build(BuildContext context) {
     _ctx = context;
-    var loginBtn = new ElevatedButton(
-      style: ButtonStyle(
-        padding: MaterialStateProperty.all(
-            EdgeInsets.fromLTRB(26.0, 10.0, 26.0, 10.0)),
-        backgroundColor: MaterialStateProperty.all(Colors.blue[700]),
-      ),
 
-      // onPressed: _submit,
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => HomePage()),
-        );
-      },
-      child: new Text("Login"),
-    );
-    /*var loginBtn = new ElevatedButton(
+    var loginBtn = new ElevatedButton(
       style: ButtonStyle(
         padding: MaterialStateProperty.all(
             EdgeInsets.fromLTRB(40.0, 10.0, 40.0, 10.0)),
@@ -114,7 +99,9 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       ),
       onPressed: _submit,
       child: new Text("Login"),
-    ); */
+    );
+   
+
 
     var register = new ElevatedButton(
       style: ButtonStyle(
