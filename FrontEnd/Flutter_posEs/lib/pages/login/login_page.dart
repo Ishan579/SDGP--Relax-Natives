@@ -116,14 +116,22 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       children: <Widget>[
         new Padding(
           padding: const EdgeInsets.all(45),
-          child: Text(
-            "Pose Estimation Pro",
-            style: new TextStyle(
-                color: Colors.white,
-                fontStyle: FontStyle.italic,
-                fontWeight: FontWeight.bold),
-            textAlign: TextAlign.right,
-            textScaleFactor: 2.0,
+          child: Text('Exer Vision',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 50,
+              fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.italic,
+              color: Colors.greenAccent,
+
+              shadows: [
+                Shadow(
+                  blurRadius: 10.0,
+                  color: Colors.black,
+                  offset: Offset(3.0, 3.0),
+                ),
+              ],
+            ),
           ),
         ),
         new Form(
@@ -177,7 +185,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
         constraints: BoxConstraints.expand(),
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("lib/images/pic5.jpg"), fit: BoxFit.cover)),
+                image: AssetImage("lib/images/pic9.png"), fit: BoxFit.cover)),
         child: new Center(
           child: loginform,
         ),

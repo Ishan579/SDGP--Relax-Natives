@@ -32,7 +32,7 @@ class startWorkout extends StatelessWidget {
         body: Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("lib/images/pic1.jpg"),
+                    image: AssetImage("lib/images/gym.jpg"),
                     fit: BoxFit.cover)),
             child: Center(
                 child: Column(

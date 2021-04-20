@@ -124,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("lib/images/pic3.jpg"), fit: BoxFit.cover)),
+                  image: AssetImage("lib/images/pic32.jpg"), fit: BoxFit.cover)),
         ),
       );
 }

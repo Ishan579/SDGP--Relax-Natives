@@ -113,7 +113,7 @@ class VideoPage extends State<VideoHomePage> {
         ),
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("lib/images/pic1.jpg"), fit: BoxFit.cover)),
+                image: AssetImage("lib/images/pic33.jpeg"), fit: BoxFit.cover)),
       ),
     );
   }
