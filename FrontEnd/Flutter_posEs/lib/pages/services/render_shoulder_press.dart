@@ -145,7 +145,7 @@ class _RenderShoulderPressState extends State<RenderShoulderPress> {
         checkCorrectPosture = false;
         goUp = !goUp;
         setState(() {
-          whatToDo = 'Drop Arms';
+          whatToDo = 'Drop';
           //correctColor = Colors.green;
         });
       }

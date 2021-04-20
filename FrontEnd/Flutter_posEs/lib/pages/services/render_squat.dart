@@ -29,7 +29,6 @@ class _RenderSquatState extends State<RenderSquat> {
   double kneeLY;
   bool squatUp;
   String whatToDo = 'Finding Posture';
-  bool wristAlignment, shoulderAlignment, ankleAlignment, kneeAndHipAlignment;
 
   var leftEyePosition = Vector(0, 0);
   var rightEyePosition = Vector(0, 0);
@@ -83,17 +82,32 @@ class _RenderSquatState extends State<RenderSquat> {
     }
   }
 
-
   _checkCorrectPosture(Map<String, List<double>> poses) {
     if (_postureAccordingToExercise(poses)) {
       if (!checkCorrectPosture) {
 
         setState(() {
+<<<<<<< HEAD
 
 
 
 
 
+=======
+              print("leftShoulder should be "+"less than 320");
+          print("leftShoulder is "+ shoulderLY.toString() );
+          print(" leftShoulder should be "+"greater than 280");
+          print(" leftShoulde is "+ shoulderLY.toString() );
+          print(" rightShoulder should be "+"less than 320");
+          print("rightShoulder "+shoulderRY.toString() );
+          print("rightShoulder should be "+"greater than 280");
+          print("rightShoulder is "+shoulderRY.toString() );
+          print("rightKnee should be "+"greater than 570");
+          print("rightKnee is "+ kneeRY.toString() );
+          print("leftKnee should be "+"greater than 570");
+          print("leftKnee is "+ kneeLY.toString() );
+        
+>>>>>>> parent of a3274c4b (Added Instructions for Squat)
          checkCorrectPosture = true;
           correctColor = Colors.green;
         });
@@ -107,6 +121,7 @@ class _RenderSquatState extends State<RenderSquat> {
         setState(() {
          checkCorrectPosture = false;
           correctColor = Colors.red;
+<<<<<<< HEAD
          //START :Individual Instructions
          if(!(shoulderLY>320)){
            setState(() {
@@ -129,6 +144,8 @@ class _RenderSquatState extends State<RenderSquat> {
 
           //END of Individual Instructions
 
+=======
+>>>>>>> parent of a3274c4b (Added Instructions for Squat)
         });
       }
     }
@@ -158,7 +175,6 @@ class _RenderSquatState extends State<RenderSquat> {
           //correctColor = Colors.green;
         });
       }
-
 
       //back up
       if (midCount &&

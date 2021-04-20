@@ -113,12 +113,12 @@ class _RenderCoolDownState extends State<RenderCoolDown> {
     if (wristAlignment) {
       setState(() {
         correctColor = Colors.green;
-        memo = 'Exercise Technique is Correct';
+        memo = 'Warrior position aligned!';
       });
     } else {
       setState(() {
         correctColor = Colors.red;
-        memo = 'Exercise Technique is Incorrect';
+        memo = 'Warrior position not aligned.';
       });
     }
   }
