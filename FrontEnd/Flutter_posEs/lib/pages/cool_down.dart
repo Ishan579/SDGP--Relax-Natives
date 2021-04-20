@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:posees/pages/services/extract_keypoints.dart';
-import 'package:posees/pages/services/render_data_yoga.dart';
+import 'package:posees/pages/services/cool_down.dart';
 import 'package:tflite/tflite.dart';
 import 'dart:math';
 
 
 
-class PushedPageY extends StatefulWidget {
+class CoolDown extends StatefulWidget {
   final List<CameraDescription> cameras;
   final String title;
-  const PushedPageY({this.cameras, this.title});
+  const CoolDown({this.cameras, this.title});
   @override
-  _PushedPageYState createState() => _PushedPageYState();
+  _CoolDownState createState() => _CoolDownState();
 }
 
-class _PushedPageYState extends State<PushedPageY> {
+class _CoolDownState extends State<CoolDown> {
   List<dynamic> _data;
   int _imageHeight = 0;
   int _imageWidth = 0;
@@ -59,7 +59,7 @@ class _PushedPageYState extends State<PushedPageY> {
             cameras: widget.cameras,
             setRecognitions: _setRecognitions,
           ),
-          RenderDataYoga(
+          RenderCoolDown(
             data: _data == null ? [] : _data,
             previewH: max(_imageHeight, _imageWidth),
             previewW: min(_imageHeight, _imageWidth),

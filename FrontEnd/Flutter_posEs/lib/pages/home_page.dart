@@ -5,7 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:posees/models/user.dart';
 import 'package:posees/pages/Squat.dart';
 import 'package:posees/pages/shoulder_press.dart';
-import 'package:posees/pages/pushed_pageY.dart';
+import 'package:posees/pages/cool_down.dart';
 import 'sample_videos.dart';
 import 'videos_home_page.dart';
 import 'start_workout_page.dart';

@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-class RenderDataYoga extends StatefulWidget {
+class RenderCoolDown extends StatefulWidget {
   final List<dynamic> data; //keypoints
   final int previewH; //image height (cam image)
   final int previewW; //image width (cam image)
   final double screenH; //screen height
   final double screenW; //screen height
 
-  RenderDataYoga(
+  RenderCoolDown(
       {this.data, this.previewH, this.previewW, this.screenH, this.screenW});
   @override
-  _RenderDataYogaState createState() => _RenderDataYogaState();
+  _RenderCoolDownState createState() => _RenderCoolDownState();
 }
 
-class _RenderDataYogaState extends State<RenderDataYoga> {
+class _RenderCoolDownState extends State<RenderCoolDown> {
   Map<String, List<double>> inputArr;
 
   String excercise = 'warrior';
@@ -74,10 +74,7 @@ class _RenderDataYogaState extends State<RenderDataYoga> {
       leftWristY = poses['leftWrist'][1];
       rightWristX = poses['rightWrist'][0];
       rightWristY = poses['leftWrist'][1];
-      leftAnkleX = poses['leftAnkle'][0];
-      rightAnkleX = poses['rightAnkle'][0];
-      leftKneeY = poses['leftKnee'][1];
-      leftHipY = poses['leftHip'][1];
+
     });
 
     if (leftWristY > 120 &&
@@ -102,37 +99,18 @@ class _RenderDataYogaState extends State<RenderDataYoga> {
           print("   rightWristX is "+ rightWristX.toString() );
         armColor = Colors.green;
         shoulderColor = Colors.green;
+        legColor=Colors.green;
       });
     } else {
       wristAlignment = false;
       setState(() {
         armColor = Colors.red;
         shoulderColor = Colors.red;
+        legColor=Colors.red;
       });
     }
-    if (leftAnkleX > 360 && rightAnkleX < 60) {
-      ankleAlignment = true;
-      setState(() {
-        legColor = Colors.green;
-      });
-    } else {
-      ankleAlignment = false;
-      setState(() {
-        legColor = Colors.red;
-      });
-    }
-    if (leftKneeY > 580 && leftHipY > 505) {
-      kneeAndHipAlignment = true;
-      setState(() {
-        //legColor = Colors.green;
-      });
-    } else {
-      kneeAndHipAlignment = false;
-      setState(() {
-        legColor = Colors.red;
-      });
-    }
-    if (wristAlignment && ankleAlignment && kneeAndHipAlignment) {
+
+    if (wristAlignment) {
       setState(() {
         correctColor = Colors.green;
         memo = 'Warrior position aligned!';

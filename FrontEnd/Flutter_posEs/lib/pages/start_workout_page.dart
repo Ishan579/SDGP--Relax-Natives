@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:camera/camera.dart';
 import 'package:posees/pages/shoulder_press.dart';
 import 'package:posees/pages/Squat.dart';
-import 'package:posees/pages/pushed_pageY.dart';
+import 'package:posees/pages/cool_down.dart';
 
 //Takes a list of cameras in the device: front[0] back camera[1]
 List<CameraDescription> cameras;
@@ -55,7 +55,7 @@ class startWorkout extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => PushedPageY(
+                  builder: (context) => CoolDown(
                     cameras: cameras,
                     title: 'Warrier ',
                   ),
