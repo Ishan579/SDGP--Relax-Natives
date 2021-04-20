@@ -147,7 +147,7 @@ class crunchesVideo extends State<crunchesPage> {
   void runYoutubePlayer() {
     _controller = YoutubePlayerController(
         initialVideoId: YoutubePlayer.convertUrlToId(
-            'https://www.youtube.com/watch?v=0OxOI3sAIrM'),
+            'https://www.youtube.com/watch?v=kGooAJM3294'),
         flags: YoutubePlayerFlags(
           enableCaption: false,
           isLive: false,
@@ -183,7 +183,7 @@ class crunchesVideo extends State<crunchesPage> {
         return Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.red,
-            title: Text('How To Do Crunches'),
+            title: Text('How To Do Shoulder press'),
           ),
           body: Center(
             child: Column(

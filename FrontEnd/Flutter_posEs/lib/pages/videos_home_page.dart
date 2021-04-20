@@ -48,7 +48,7 @@ class VideoPage extends State<VideoHomePage> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => crunchesPage()));
                 },
-                child: Text("Crunches"),
+                child: Text("Shoulder press"),
                 color: Colors.teal,
                 textColor: Colors.white,
                 shape: RoundedRectangleBorder(

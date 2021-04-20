@@ -67,6 +67,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
 
   void _submit() {
     final form = formkey.currentState;
+    //Navigator.of(context).pushNamed("/home");
 
     if (form.validate()) {
       setState(() {
@@ -100,8 +101,6 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       onPressed: _submit,
       child: new Text("Login"),
     );
-
-
 
     var register = new ElevatedButton(
       style: ButtonStyle(
