@@ -69,57 +69,62 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              // _image != null
-              //    ? Image.file(_image)
-              //   : Icon(Icons.image, size: 100),
-
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.teal,
-                    onPrimary: Colors.white,
-                    onSurface: Colors.grey,
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(25))),
-                    textStyle:
-                        TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => VideoHomePage()));
-                },
-                child: Text("Workout Guide"),
-              ),
-
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.teal,
-                    onPrimary: Colors.white,
-                    onSurface: Colors.grey,
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(30))),
-                    textStyle:
-                        TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => startWorkout()));
-                },
-                child: Text("Start Workout!"),
-              ),
-            ],
-          ),
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: Text("Lets Begin"),
         ),
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("lib/images/pic3.jpg"), fit: BoxFit.cover)),
-      ),
-    );
-  }
+        body: Container(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                FlatButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => VideoHomePage()));
+                  },
+                  shape: CircleBorder(),
+                  color: Color(0xFF009688).withOpacity(0.8),
+                  padding: EdgeInsets.all(20.0),
+                  child: Column(
+                    // Replace with a Row for horizontal icon + text
+                    children: <Widget>[
+                      Icon(
+                        Icons.accessibility_new_rounded,
+                        size: 120,
+                        color: Colors.black,
+                      ),
+                      Text("Train")
+                    ],
+                  ),
+                ),
+                Text("  "),
+                FlatButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => startWorkout()));
+                  },
+                  shape: CircleBorder(),
+                  color: Color(0xFF009688).withOpacity(0.8),
+                  padding: EdgeInsets.all(20.0),
+                  child: Column(
+                    // Replace with a Row for horizontal icon + text
+                    children: <Widget>[
+                      Icon(Icons.accessibility_new_rounded, size: 120),
+                      Text("Work Outt")
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("lib/images/pic3.jpg"), fit: BoxFit.cover)),
+        ),
+      );
 }
