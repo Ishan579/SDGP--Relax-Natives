@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:camera/camera.dart';
 import 'package:posees/pages/shoulder_press.dart';
-import 'package:posees/pages/pushed_pageS.dart';
+import 'package:posees/pages/Squat.dart';
 import 'package:posees/pages/pushed_pageY.dart';
 
 //Takes a list of cameras in the device: front[0] back camera[1]
@@ -103,7 +103,7 @@ class startWorkout extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => PushedPageS(
+                  builder: (context) => Squat(
                     cameras: cameras,
                     title: 'squat ',
                   ),

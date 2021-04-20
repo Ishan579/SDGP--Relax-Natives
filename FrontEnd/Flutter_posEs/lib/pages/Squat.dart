@@ -6,19 +6,19 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:posees/pages/services/extract_keypoints.dart';
-import 'package:posees/pages/services/render_data_squat.dart';
+import 'package:posees/pages/services/render_squat.dart';
 import 'package:tflite/tflite.dart';
 import 'dart:math';
 
-class PushedPageS extends StatefulWidget {
+class Squat extends StatefulWidget {
   final List<CameraDescription> cameras;
   final String title;
-  const PushedPageS({this.cameras, this.title});
+  const Squat({this.cameras, this.title});
   @override
-  _PushedPageSState createState() => _PushedPageSState();
+  _SquatState createState() => _SquatState();
 }
 
-class _PushedPageSState extends State<PushedPageS> {
+class _SquatState extends State< Squat> {
   List<dynamic> _data;
   int _imageHeight = 0;
   int _imageWidth = 0;
@@ -28,7 +28,7 @@ class _PushedPageSState extends State<PushedPageS> {
   void initState() {
     super.initState();
     var res = loadModel();
-    print('Model Response: ' + res.toString());
+    print('Load Model Response: ' + res.toString());
   }
 
   _setRecognitions(data, imageHeight, imageWidth) {
@@ -52,7 +52,7 @@ class _PushedPageSState extends State<PushedPageS> {
     Size screen = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text('AlignAI Squat'),
+        title: Text(' Squat'),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -62,12 +62,12 @@ class _PushedPageSState extends State<PushedPageS> {
             cameras: widget.cameras,
             setRecognitions: _setRecognitions,
           ),
-          RenderData(
-            data: _data == null ? [] : _data,
-            previewH: max(_imageHeight, _imageWidth),
-            previewW: min(_imageHeight, _imageWidth),
-            screenH: screen.height,
-            screenW: screen.width,
+          RenderSquat(
+            xyPointsArray: _data == null ? [] : _data,
+            imageHeight: max(_imageHeight, _imageWidth),
+            imageWidth: min(_imageHeight, _imageWidth),
+            screenHeight: screen.height,
+            screenWidth: screen.width,
           ),
         ],
       ),
