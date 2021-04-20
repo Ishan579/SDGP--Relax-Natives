@@ -21,62 +21,94 @@ class VideoPage extends State<VideoHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              RaisedButton(
+              FlatButton(
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => stretchPage()));
                 },
-                child: Text("Stretch"),
-                color: Colors.teal,
+                shape: CircleBorder(),
+                color: Color(0xFF009688).withOpacity(0.8),
+                padding: EdgeInsets.all(20.0),
                 textColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25))),
+                child: Column(
+                  // Replace with a Row for horizontal icon + text
+                  children: <Widget>[
+                    Icon(Icons.accessibility_new_rounded, size: 40),
+                    Text("Squat"),
+                  ],
+                ),
               ),
-              RaisedButton(
+              FlatButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => squatPage()));
+                      MaterialPageRoute(builder: (context) => stretchPage()));
                 },
-                child: Text("      Squats      "),
-                color: Colors.teal,
+                shape: CircleBorder(),
+                color: Color(0xFF009688).withOpacity(0.8),
+                padding: EdgeInsets.all(20.0),
                 textColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25))),
+                child: Column(
+                  // Replace with a Row for horizontal icon + text
+                  children: <Widget>[
+                    Icon(Icons.accessibility_new_rounded, size: 40),
+                    Text("Stretch"),
+                  ],
+                ),
               ),
-              RaisedButton(
+              FlatButton(
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => crunchesPage()));
                 },
-                child: Text("Shoulder press"),
-                color: Colors.teal,
+                shape: CircleBorder(),
+                color: Color(0xFF009688).withOpacity(0.8),
+                padding: EdgeInsets.all(20.0),
                 textColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25))),
+                child: Column(
+                  // Replace with a Row for horizontal icon + text
+                  children: <Widget>[
+                    Icon(Icons.accessibility_new_rounded, size: 40),
+                    Text("Stretch"),
+                  ],
+                ),
               ),
-              RaisedButton(
+              FlatButton(
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => burpeesPage()));
                 },
-                child: Text("      Burpees     "),
-                color: Colors.teal,
+                shape: CircleBorder(),
+                color: Color(0xFF009688).withOpacity(0.8),
+                padding: EdgeInsets.all(20.0),
                 textColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25))),
+                child: Column(
+                  // Replace with a Row for horizontal icon + text
+                  children: <Widget>[
+                    Icon(Icons.accessibility_new_rounded, size: 40),
+                    Text("Burpees"),
+                  ],
+                ),
               ),
-              RaisedButton(
+              FlatButton(
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => lungesPage()));
                 },
-                child: Text("Lunges"),
-                color: Colors.teal,
+                shape: CircleBorder(),
+                color: Color(0xFF009688).withOpacity(0.8),
+                padding: EdgeInsets.all(20.0),
                 textColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25))),
+                child: Column(
+                  // Replace with a Row for horizontal icon + text
+                  children: <Widget>[
+                    Icon(Icons.accessibility_new_rounded, size: 40),
+                    Text("Lunges"),
+                  ],
+                ),
               ),
             ],
+
+
           ),
         ),
         decoration: BoxDecoration(

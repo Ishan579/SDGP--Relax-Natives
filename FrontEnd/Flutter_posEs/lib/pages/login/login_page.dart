@@ -96,7 +96,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       style: ButtonStyle(
         padding: MaterialStateProperty.all(
             EdgeInsets.fromLTRB(40.0, 10.0, 40.0, 10.0)),
-        backgroundColor: MaterialStateProperty.all(Colors.green),
+        backgroundColor: MaterialStateProperty.all(Colors.green[750]),
       ),
       onPressed: _submit,
       child: new Text("Login"),
@@ -106,7 +106,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       style: ButtonStyle(
         padding: MaterialStateProperty.all(
             EdgeInsets.fromLTRB(26.0, 10.0, 26.0, 10.0)),
-        backgroundColor: MaterialStateProperty.all(Colors.blue[700]),
+        backgroundColor: MaterialStateProperty.all(Colors.green[750]),
       ),
       onPressed: _register,
       child: new Text("Register"),
