@@ -107,7 +107,27 @@ class _RenderSquatState extends State<RenderSquat> {
         setState(() {
          checkCorrectPosture = false;
           correctColor = Colors.red;
+         //START :Individual Instructions
+         if((shoulderLY>320)){
+           setState(() {
+             whatToDo = "leftShoulder should be "+"less than 320";
+             whatToDo = "leftShoulder is "+ shoulderLY.toString();
+           });
+         }
+         else if ((shoulderRY<320)){
+           whatToDo = "leftShoulder should be "+"less than 320";
+           whatToDo = "leftShoulder is "+ shoulderRY.toString();
+         }
+         else if((kneeRY>570)){
+           whatToDo = "rightKnee should be "+"greater than 570";
+           whatToDo = "rightKnee is "+ kneeRY.toString();
+         }
+         else if((kneeLY>570)){
+           whatToDo = "leftKnee should be "+"greater than 570";
+           whatToDo = "leftKnee is "+ kneeLY.toString();
+         }
 
+          //END of Individual Instructions
 
         });
       }
@@ -117,28 +137,6 @@ class _RenderSquatState extends State<RenderSquat> {
   Future<void> _countingLogic(Map<String, List<double>> poses) async {
     if (poses != null) {
       _checkCorrectPosture(poses);
-      //START :Individual Instructions
-      if((shoulderLY>320)){
-        setState(() {
-          whatToDo = "leftShoulder should be "+"less than 320";
-          whatToDo = "leftShoulder is "+ shoulderLY.toString();
-        });
-      }
-      else if ((shoulderRY<320)){
-        whatToDo = "leftShoulder should be "+"less than 320";
-        whatToDo = "leftShoulder is "+ shoulderRY.toString();
-      }
-      else if((kneeRY>570)){
-        whatToDo = "rightKnee should be "+"greater than 570";
-        whatToDo = "rightKnee is "+ kneeRY.toString();
-      }
-      else if((kneeLY>570)){
-        whatToDo = "leftKnee should be "+"greater than 570";
-        whatToDo = "leftKnee is "+ kneeLY.toString();
-      }
-
-      //END of Individual Instructions
-
 
       if (checkCorrectPosture && squatUp && midCount == false) {
         //in correct initial posture
