@@ -49,7 +49,7 @@ class _RenderSquatState extends State<RenderSquat> {
   void initState() {
     inputArray = new Map();
     midCount = false;
-     checkCorrectPosture = false;
+    checkCorrectPosture = false;
     _counter = 0;
     correctColor = Colors.red;
     shoulderLY = 0;
@@ -85,19 +85,8 @@ class _RenderSquatState extends State<RenderSquat> {
   _checkCorrectPosture(Map<String, List<double>> poses) {
     if (_postureAccordingToExercise(poses)) {
       if (!checkCorrectPosture) {
-
         setState(() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-
-
-
-
-=======
-=======
->>>>>>> parent of a3274c4b (Added Instructions for Squat)
-              print("leftShoulder should be "+"less than 320");
+          print("leftShoulder should be "+"less than 320");
           print("leftShoulder is "+ shoulderLY.toString() );
           print(" leftShoulder should be "+"greater than 280");
           print(" leftShoulde is "+ shoulderLY.toString() );
@@ -109,52 +98,16 @@ class _RenderSquatState extends State<RenderSquat> {
           print("rightKnee is "+ kneeRY.toString() );
           print("leftKnee should be "+"greater than 570");
           print("leftKnee is "+ kneeLY.toString() );
-        
-<<<<<<< HEAD
->>>>>>> parent of a3274c4b (Added Instructions for Squat)
-=======
->>>>>>> parent of a3274c4b (Added Instructions for Squat)
-         checkCorrectPosture = true;
+
+          checkCorrectPosture = true;
           correctColor = Colors.green;
         });
-
-
-
-
       }
     } else {
       if (checkCorrectPosture) {
         setState(() {
-         checkCorrectPosture = false;
+          checkCorrectPosture = false;
           correctColor = Colors.red;
-<<<<<<< HEAD
-<<<<<<< HEAD
-         //START :Individual Instructions
-         if(!(shoulderLY>320)){
-           setState(() {
-             whatToDo = "leftShoulder should be "+"less than 320";
-             whatToDo = "leftShoulder is "+ shoulderLY.toString();
-           });
-         }
-         else if (!(shoulderRY<320)){
-           whatToDo = "leftShoulder should be "+"less than 320";
-           whatToDo = "leftShoulder is "+ shoulderRY.toString();
-         }
-         else if(!(kneeRY>570)){
-           whatToDo = "rightKnee should be "+"greater than 570";
-           whatToDo = "rightKnee is "+ kneeRY.toString();
-         }
-         else if(!(kneeLY>570)){
-           whatToDo = "leftKnee should be "+"greater than 570";
-           whatToDo = "leftKnee is "+ kneeLY.toString();
-         }
-
-          //END of Individual Instructions
-
-=======
->>>>>>> parent of a3274c4b (Added Instructions for Squat)
-=======
->>>>>>> parent of a3274c4b (Added Instructions for Squat)
         });
       }
     }
@@ -316,14 +269,14 @@ class _RenderSquatState extends State<RenderSquat> {
             width: 100,
             height: 15,
             child: Container(
-                // child: Text(
-                //   "● ${k["part"]}",
-                //   style: TextStyle(
-                //     color: Color.fromRGBO(37, 213, 253, 1.0),
-                //     fontSize: 12.0,
-                //   ),
-                // ),
-                ),
+              // child: Text(
+              //   "● ${k["part"]}",
+              //   style: TextStyle(
+              //     color: Color.fromRGBO(37, 213, 253, 1.0),
+              //     fontSize: 12.0,
+              //   ),
+              // ),
+            ),
           );
         }).toList();
 
@@ -343,7 +296,7 @@ class _RenderSquatState extends State<RenderSquat> {
           children: [
             CustomPaint(
               painter:
-                  MyPainter(left: leftShoulderPosition, right: rightShoulderPosition),
+              MyPainter(left: leftShoulderPosition, right: rightShoulderPosition),
             ),
             CustomPaint(
               painter: MyPainter(left: leftElbowPosition, right: leftShoulderPosition),
