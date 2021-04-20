@@ -88,12 +88,15 @@ class _RenderSquatState extends State<RenderSquat> {
 
         setState(() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
 
 
 =======
+=======
+>>>>>>> parent of a3274c4b (Added Instructions for Squat)
               print("leftShoulder should be "+"less than 320");
           print("leftShoulder is "+ shoulderLY.toString() );
           print(" leftShoulder should be "+"greater than 280");
@@ -107,6 +110,9 @@ class _RenderSquatState extends State<RenderSquat> {
           print("leftKnee should be "+"greater than 570");
           print("leftKnee is "+ kneeLY.toString() );
         
+<<<<<<< HEAD
+>>>>>>> parent of a3274c4b (Added Instructions for Squat)
+=======
 >>>>>>> parent of a3274c4b (Added Instructions for Squat)
          checkCorrectPosture = true;
           correctColor = Colors.green;
@@ -121,6 +127,7 @@ class _RenderSquatState extends State<RenderSquat> {
         setState(() {
          checkCorrectPosture = false;
           correctColor = Colors.red;
+<<<<<<< HEAD
 <<<<<<< HEAD
          //START :Individual Instructions
          if(!(shoulderLY>320)){
@@ -144,6 +151,8 @@ class _RenderSquatState extends State<RenderSquat> {
 
           //END of Individual Instructions
 
+=======
+>>>>>>> parent of a3274c4b (Added Instructions for Squat)
 =======
 >>>>>>> parent of a3274c4b (Added Instructions for Squat)
         });
