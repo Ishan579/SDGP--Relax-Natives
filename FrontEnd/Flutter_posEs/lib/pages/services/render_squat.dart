@@ -87,29 +87,47 @@ class _RenderSquatState extends State<RenderSquat> {
   _checkCorrectPosture(Map<String, List<double>> poses) {
     if (_postureAccordingToExercise(poses)) {
       if (!checkCorrectPosture) {
+
         setState(() {
-          whatToDo = "leftShoulder should be "+"less than 320";
-          whatToDo = "leftShoulder is "+ shoulderLY.toString();
-          whatToDo = " leftShoulder should be "+"greater than 280";
-          whatToDo = " leftShoulder is "+ shoulderLY.toString();
-          whatToDo = " rightShoulder should be "+"less than 320";
-          whatToDo = "rightShoulder "+shoulderRY.toString();
-          whatToDo = "rightShoulder should be "+"greater than 280";
-          whatToDo = "rightShoulder is "+shoulderRY.toString();
-          whatToDo = "rightKnee should be "+"greater than 570";
-          whatToDo = "rightKnee is "+ kneeRY.toString();
-          whatToDo = "leftKnee should be "+"greater than 570";
-          whatToDo = "leftKnee is "+ kneeLY.toString();
+
+
+
+
 
          checkCorrectPosture = true;
           correctColor = Colors.green;
         });
+
+
+
+
       }
     } else {
       if (checkCorrectPosture) {
         setState(() {
          checkCorrectPosture = false;
           correctColor = Colors.red;
+         //START :Individual Instructions
+         if(!(shoulderLY>320)){
+           setState(() {
+             whatToDo = "leftShoulder should be "+"less than 320";
+             whatToDo = "leftShoulder is "+ shoulderLY.toString();
+           });
+         }
+         else if (!(shoulderRY<320)){
+           whatToDo = "leftShoulder should be "+"less than 320";
+           whatToDo = "leftShoulder is "+ shoulderRY.toString();
+         }
+         else if(!(kneeRY>570)){
+           whatToDo = "rightKnee should be "+"greater than 570";
+           whatToDo = "rightKnee is "+ kneeRY.toString();
+         }
+         else if(!(kneeLY>570)){
+           whatToDo = "leftKnee should be "+"greater than 570";
+           whatToDo = "leftKnee is "+ kneeLY.toString();
+         }
+
+          //END of Individual Instructions
 
         });
       }
