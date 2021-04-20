@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:camera/camera.dart';
-import 'package:posees/pages/pushed_pageA.dart';
+import 'package:posees/pages/shoulder_press.dart';
 import 'package:posees/pages/pushed_pageS.dart';
 import 'package:posees/pages/pushed_pageY.dart';
 
@@ -80,7 +80,7 @@ class startWorkout extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => PushedPageA(
+                  builder: (context) => ShoulderPress(
                     cameras: cameras,
                     title: 'Arm Press ',
                   ),

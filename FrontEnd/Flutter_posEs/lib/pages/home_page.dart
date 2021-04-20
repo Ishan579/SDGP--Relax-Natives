@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:posees/models/user.dart';
 import 'package:posees/pages/pushed_pageS.dart';
-import 'package:posees/pages/pushed_pageA.dart';
+import 'package:posees/pages/shoulder_press.dart';
 import 'package:posees/pages/pushed_pageY.dart';
 import 'sample_videos.dart';
 import 'videos_home_page.dart';

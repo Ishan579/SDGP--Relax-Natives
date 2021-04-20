@@ -2,12 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:tflite/tflite.dart';
 import 'dart:math';
-
-//import 'package:align_ai/services/extract_keypoints.dart';
-//import 'package:align_ai/services/render_data.dart';
-//import 'package:align_ai/services/render_data_yoga.dart';
-//import 'package:align_ai/services/render_data_arm_press.dart';
-
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:posees/pages/services/extract_keypoints.dart';
@@ -15,15 +9,15 @@ import 'package:posees/pages/services/render_shoulder_press.dart';
 import 'package:tflite/tflite.dart';
 import 'dart:math';
 
-class PushedPageA extends StatefulWidget {
+class ShoulderPress extends StatefulWidget {
   final List<CameraDescription> cameras;
   final String title;
-  const PushedPageA({this.cameras, this.title});
+  const ShoulderPress({this.cameras, this.title});
   @override
-  _PushedPageAState createState() => _PushedPageAState();
+  _ShoulderPressState createState() => _ShoulderPressState();
 }
 
-class _PushedPageAState extends State<PushedPageA> {
+class _ShoulderPressState extends State<ShoulderPress> {
   List<dynamic> _data;
   int _imageHeight = 0;
   int _imageWidth = 0;
@@ -33,7 +27,7 @@ class _PushedPageAState extends State<PushedPageA> {
   void initState() {
     super.initState();
     var res = loadModel();
-    print('Model Response: ' + res.toString());
+    print('Load Model Response: ' + res.toString());
   }
 
   _setRecognitions(data, imageHeight, imageWidth) {
@@ -57,7 +51,7 @@ class _PushedPageAState extends State<PushedPageA> {
     Size screen = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text('AlignAI Arm Press'),
+        title: Text('Shoulder Press'),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
