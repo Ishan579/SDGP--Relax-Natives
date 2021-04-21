@@ -96,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         size: 120,
                         color: Colors.black,
                       ),
-                      Text("Train")
+                      Text("Guide")
                     ],
                   ),
                 ),
@@ -115,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     // Replace with a Row for horizontal icon + text
                     children: <Widget>[
                       Icon(Icons.accessibility_new_rounded, size: 120),
-                      Text("Work Outt")
+                      Text("Work Out!")
                     ],
                   ),
                 ),
@@ -124,7 +124,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("lib/images/pic32.jpg"), fit: BoxFit.cover)),
+                  image: AssetImage("lib/images/pic32.jpg"),
+                  fit: BoxFit.cover)),
         ),
       );
 }

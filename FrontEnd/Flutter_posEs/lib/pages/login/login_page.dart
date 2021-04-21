@@ -116,14 +116,14 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       children: <Widget>[
         new Padding(
           padding: const EdgeInsets.all(45),
-          child: Text('Exer Vision',
+          child: Text(
+            'Exer Vision',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 50,
               fontWeight: FontWeight.bold,
               fontStyle: FontStyle.italic,
               color: Colors.greenAccent,
-
               shadows: [
                 Shadow(
                   blurRadius: 10.0,

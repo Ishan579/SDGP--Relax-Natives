@@ -34,14 +34,14 @@ class VideoPage extends State<VideoHomePage> {
                   // Replace with a Row for horizontal icon + text
                   children: <Widget>[
                     Icon(Icons.accessibility_new_rounded, size: 40),
-                    Text("Squat"),
+                    Text("Stretch"),
                   ],
                 ),
               ),
               FlatButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => stretchPage()));
+                      MaterialPageRoute(builder: (context) => squatPage()));
                 },
                 shape: CircleBorder(),
                 color: Color(0xFF009688).withOpacity(0.8),
@@ -51,7 +51,7 @@ class VideoPage extends State<VideoHomePage> {
                   // Replace with a Row for horizontal icon + text
                   children: <Widget>[
                     Icon(Icons.accessibility_new_rounded, size: 40),
-                    Text("Stretch"),
+                    Text("Squats"),
                   ],
                 ),
               ),
@@ -68,7 +68,7 @@ class VideoPage extends State<VideoHomePage> {
                   // Replace with a Row for horizontal icon + text
                   children: <Widget>[
                     Icon(Icons.accessibility_new_rounded, size: 40),
-                    Text("Stretch"),
+                    Text("Shoulder press"),
                   ],
                 ),
               ),
@@ -107,8 +107,6 @@ class VideoPage extends State<VideoHomePage> {
                 ),
               ),
             ],
-
-
           ),
         ),
         decoration: BoxDecoration(

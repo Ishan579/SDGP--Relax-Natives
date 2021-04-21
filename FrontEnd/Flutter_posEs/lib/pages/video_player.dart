@@ -82,7 +82,7 @@ class squatVideo extends State<squatPage> {
   void runYoutubePlayer() {
     _controller = YoutubePlayerController(
         initialVideoId: YoutubePlayer.convertUrlToId(
-            'https://www.youtube.com/watch?v=aclHkVaku9U'),
+            'https://www.youtube.com/watch?v=aclHkVaku9U&t=2s'),
         flags: YoutubePlayerFlags(
           enableCaption: false,
           isLive: false,
