@@ -10,23 +10,31 @@ import 'package:tflite/tflite.dart';
 import 'dart:math';
 
 class ShoulderPress extends StatefulWidget {
+  //gets a list of available cameras
   final List<CameraDescription> cameras;
+  //title of the class
   final String title;
+  //constructor for the ShoulderPress class
   const ShoulderPress({this.cameras, this.title});
   @override
   _ShoulderPressState createState() => _ShoulderPressState();
 }
 
 class _ShoulderPressState extends State<ShoulderPress> {
+  //a list hold X and Y points
   List<dynamic> _data;
+  //initializing height of the camera Feed Image
   int _imageHeight = 0;
+  //initializing width of the camera Feed Image
   int _imageWidth = 0;
   int x = 1;
 
   @override
   void initState() {
     super.initState();
+    //stores response from the posenet model
     var res = loadModel();
+    //printing out the response from the mdoel
     print('Load Model Response: ' + res.toString());
   }
 
