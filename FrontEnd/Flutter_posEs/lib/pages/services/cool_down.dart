@@ -120,6 +120,7 @@ class _RenderCoolDownState extends State<RenderCoolDown> {
     if (wristAlignment ) {
       setState(() {
         correctColor = Colors.green;
+        legColor=Colors.green;
         memo = 'Cool Down position aligned!';
       });
     } else {

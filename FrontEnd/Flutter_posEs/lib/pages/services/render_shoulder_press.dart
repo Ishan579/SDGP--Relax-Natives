@@ -74,6 +74,7 @@ class _RenderShoulderPressState extends State<RenderShoulderPress> {
       kneeLY = poses['leftKnee'][1];
       kneeRY = poses['rightKnee'][1];
     });
+    //checking if the perfomed exercise is in position
     if (excercise == 'arm_press') {
       if (squatUp) {
         return wristLX > 280 &&
@@ -89,7 +90,7 @@ class _RenderShoulderPressState extends State<RenderShoulderPress> {
       }
     }
   }
-
+//setting the colours according to the correct posture
   _checkCorrectPosture(Map<String, List<double>> poses) {
     if (_postureAccordingToExercise(poses)) {
       if (!isCorrectPosture) {
@@ -107,6 +108,7 @@ class _RenderShoulderPressState extends State<RenderShoulderPress> {
       }
     }
   }
+//setting the colours according to the counting reps
 
   Future<void> _countingLogic(Map<String, List<double>> poses) async {
     if (poses != null) {
@@ -211,7 +213,7 @@ class _RenderShoulderPressState extends State<RenderShoulderPress> {
         rightAnklePos.y = y - 25;
       }
     }
-
+//rendering the skeleton
     List<Widget> _renderKeypoints() {
       var lists = <Widget>[];
       widget.xyPointsArray.forEach((re) {
