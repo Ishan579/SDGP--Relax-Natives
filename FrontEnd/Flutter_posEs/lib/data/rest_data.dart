@@ -6,15 +6,15 @@ import 'dart:async';
 import '../models/user.dart';
 
 class RestData {
-  Future<User> login(String username, String password) async {
-    var user = new User.name(null, username, password, null, null, null, null);
+  Future<AppUser> login(String username, String password) async {
+    var user = new AppUser.name(null, username, password, null, null, null, null);
     var db = new DatabaseHelper();
-    var userRetorno = new User();
+    var userRetorno = new AppUser();
     userRetorno = await db.selectUser(user);
     if (userRetorno != null) {
       return new Future.value(userRetorno);
     } else {
-      return new Future.value(new User());
+      return new Future.value(new AppUser());
     }
   }
 }

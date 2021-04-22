@@ -45,7 +45,7 @@ class DatabaseHelper {
   }
 
 //insertion
-  Future<int> saveUser(User user) async {
+  Future<int> saveUser(AppUser user) async {
     var dbClient = await db;
     int res = await dbClient.insert("User", user.toMap());
     List<Map> list = await dbClient.rawQuery('SELECT * FROM User');
@@ -53,7 +53,7 @@ class DatabaseHelper {
     return res;
   }
 
-  Future<User> selectUser(User user) async {
+  Future<AppUser> selectUser(AppUser user) async {
     var dbClient = await db;
     List<Map> maps = await dbClient.query(tableUser,
         columns: [
@@ -68,7 +68,7 @@ class DatabaseHelper {
         whereArgs: [user.username, user.password]);
     print(maps);
     if (maps.length > 0) {
-      var rUser = new User.name(
+      var rUser = new AppUser.name(
           maps[0]['name'],
           maps[0]['username'],
           maps[0]['password'],
@@ -83,7 +83,7 @@ class DatabaseHelper {
   }
 
   //deletion
-  Future<int> deleteUser(User user) async {
+  Future<int> deleteUser(AppUser user) async {
     var dbClient = await db;
     int res = await dbClient.delete("User");
     return res;

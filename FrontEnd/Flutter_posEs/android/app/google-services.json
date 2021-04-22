@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "977590483184",
+    "project_id": "exervision-f608a",
+    "storage_bucket": "exervision-f608a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977590483184:android:f9249f59e1755ea3fc2a35",
+        "android_client_info": {
+          "package_name": "com.example.posees"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "977590483184-e4h21d0g3s13ui3d5lev4nvui4653922.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADMGEnIAn_z3I-4I9_lCBxj6FBC_s4V0I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "977590483184-e4h21d0g3s13ui3d5lev4nvui4653922.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

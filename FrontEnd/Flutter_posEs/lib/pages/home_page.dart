@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  final User user;
+  final AppUser user;
   MyHomePage({Key key, this.title, this.user}) : super(key: key);
 
   final String title;

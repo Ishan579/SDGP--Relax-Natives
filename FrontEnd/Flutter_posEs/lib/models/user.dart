@@ -1,4 +1,4 @@
-class User {
+class AppUser {
   String _name;
   String _username;
   String _password;
@@ -7,11 +7,11 @@ class User {
   String _age;
   String _flaglogged;
 
-  User();
-  User.name(this._name, this._username, this._password, this._weight,
+  AppUser();
+  AppUser.name(this._name, this._username, this._password, this._weight,
       this._gender, this._age, this._flaglogged);
 
-  User.map(dynamic obj) {
+  AppUser.map(dynamic obj) {
     this._name = obj['name'];
     this._username = obj['username'];
     this._password = obj['password'];
