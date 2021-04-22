@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter/material.dart';
 import 'package:posees/models/user.dart';
-import 'package:posees/pages/login/login_presenter.dart';
-
+// import 'package:posees/pages/login/login_presenter.dart';
 import '../../data/database_helper.dart';
 import '../home_page.dart';
 import '../home_page.dart';
 import 'package:posees/data/rest_data.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -16,7 +16,7 @@ class LoginPage extends StatefulWidget {
 
 bool _secureText = true;
 
-class _LoginPageState extends State<LoginPage> implements LoginPageContract {
+class _LoginPageState extends State<LoginPage> implements LoginPageStatus {
   BuildContext _ctx;
   bool _isLoading = false;
   final formkey = new GlobalKey<FormState>();
@@ -24,33 +24,21 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
 
   String _username, _password;
 
-  LoginPagePresenter _presenter;
+  LoginPageHandler _presenter;
 
   _LoginPageState() {
-    _presenter = new LoginPagePresenter(this);
+    _presenter = new LoginPageHandler(this);
   }
 
   @override
   void onLoginError(String error) {
     // TODO: implement onLoginError
     _showSnackBar(error);
-    setState(() {
-      _isLoading = false;
-    });
   }
 
   @override
-  void onLoginSuccess(User user) async {
+  void onLoginSuccess(AppUser user) async {
     // TODO: implement onLoginSuccess
-    /* _showSnackBar(user.toString());
-    setState(() {
-      _isLoading = false;
-    });
-    var db = new DatabaseHelper();
-    await db.saveUser(user);
-   Navigator.of(context).pushNamed("/home");
-  }
-    }*/
     if (user.flaglogged == "logged") {
       Navigator.push(
           context,
@@ -59,9 +47,8 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
               user: user,
             ),
           ));
-      Navigator.of(context).pushNamed("/home");
     } else {
-      _showSnackBar("Invalid Username or Password");
+      _showSnackBar("Error");
     }
   }
 
@@ -194,8 +181,8 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
   }
 }
 
-/*abstract class LoginPageStatus {
-  void onLoginSuccess(User user);
+abstract class LoginPageStatus {
+  void onLoginSuccess(AppUser user);
   void onLoginError(String error);
 }
 
@@ -204,10 +191,45 @@ class LoginPageHandler {
   RestData api = new RestData();
   LoginPageHandler(this._view);
 
-  doLogin(String username, String password) {
-    api
-        .login(username, password)
-        .then((user) => _view.onLoginSuccess(user))
-        .catchError((onError) => _view.onLoginError(onError));
+  //login method
+  doLogin(String useremail, String password) async {
+
+    try {
+      //create firebase auth instance
+      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: useremail,
+          password: password
+      );
+      //check user status
+      if (userCredential != null) {
+        //Create realtime database referance
+        final databaseRef = FirebaseDatabase.instance.reference();
+        //read firebase realtime data
+        databaseRef.child('users').orderByChild("email").equalTo(useremail).once().then((DataSnapshot snapshot) {
+          print('Data : ${snapshot.value}');
+          //Map data snapshot
+          Map <dynamic, dynamic> values = snapshot.value;
+          values.forEach((key, values) {
+            var name = values["name"].toString();
+            var email = values["email"].toString();
+            var gender = values["gender"].toString();
+            var age = values["age"].toString();
+            var weight = values["weight"].toString();
+            //Create user object
+            AppUser user = AppUser.name(name, email, null, weight, gender, age, "logged");
+            _view.onLoginSuccess(user);
+          });
+        });
+      }
+      //  Handle auth exceptions
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+        _view.onLoginError('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+        _view.onLoginError('Wrong password provided for that user.');
+      }
+    }
   }
-}*/
+}

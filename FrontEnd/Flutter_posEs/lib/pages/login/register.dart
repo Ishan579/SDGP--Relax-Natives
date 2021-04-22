@@ -1,36 +1,39 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_app/database_data/db-helper.dart';
-//import 'package:FLUTTER_POSES/data/database_helper.dart';
-
-import 'package:posees/models/user.dart';
-//import '../../data/database_helper.dart';
-import 'package:posees/data/database_helper.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
   _RegisterPageState createState() => new _RegisterPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _RegisterPageState  extends State<RegisterPage> {
   BuildContext _ctx;
+  //create form keys
   final formKey = new GlobalKey<FormState>();
   final scaffoldKey = new GlobalKey<ScaffoldState>();
-  String _name, _username, _password, _weight, _age;
+
+  //Create global variables
+  String _name, _email, _password, _weight, _age;
   String _gender = 'male';
 
+  //Build Ui
   @override
   Widget build(BuildContext context) {
     _ctx = context;
+    //register button
     var registerBtn = new ElevatedButton(
       style: ButtonStyle(
-        padding: MaterialStateProperty.all(
-            EdgeInsets.fromLTRB(26.0, 10.0, 26.0, 10.0)),
+        padding: MaterialStateProperty.all(EdgeInsets.fromLTRB(26.0, 10.0, 26.0, 10.0)),
         backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
       ),
       onPressed: _submit,
       child: new Text("Register"),
     );
 
+
+    //registration form
     var registerForm = new Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
@@ -40,6 +43,7 @@ class _RegisterPageState extends State<RegisterPage> {
             children: <Widget>[
               new Padding(
                 padding: const EdgeInsets.fromLTRB(30.0, 1.0, 30.0, 1.0),
+                //name feild
                 child: new TextFormField(
                   onSaved: (val) => _name = val,
                   decoration: new InputDecoration(labelText: "Name"),
@@ -53,12 +57,14 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               new Padding(
                 padding: const EdgeInsets.fromLTRB(30.0, 1.0, 30.0, 1.0),
+                //Email feild
                 child: new TextFormField(
-                  onSaved: (val) => _username = val,
-                  decoration: new InputDecoration(labelText: "Username"),
+                  onSaved: (val) => _email = val,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: new InputDecoration(labelText: "Email"),
                   validator: (value) {
                     if (value.isEmpty) {
-                      return 'Username is required';
+                      return 'Email is required';
                     }
                     return null;
                   },
@@ -66,6 +72,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               new Padding(
                 padding: const EdgeInsets.fromLTRB(30.0, 1.0, 30.0, 1.0),
+                //Password feild
                 child: new TextFormField(
                   obscureText: true,
                   onSaved: (val) => _password = val,
@@ -80,6 +87,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               new Padding(
                 padding: const EdgeInsets.fromLTRB(30.0, 1.0, 30.0, 1.0),
+                //weight text feild
                 child: new TextFormField(
                   keyboardType: TextInputType.number,
                   onSaved: (val) => _weight = val,
@@ -87,8 +95,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Please enter your weight';
-                    } else if (int.parse(value) >= 150 ||
-                        int.parse(value) < 20) {
+                    }else if(int.parse(value) >= 150 || int.parse(value) < 20){
                       return 'Your weight should be between 20 - 150';
                     }
                     return null;
@@ -97,6 +104,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               new Padding(
                 padding: const EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 1.0),
+                //Gender radio buttons
                 child: new Column(
                   children: <Widget>[
                     new Text("Gender"),
@@ -125,6 +133,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               new Padding(
                 padding: const EdgeInsets.fromLTRB(30.0, 1.0, 30.0, 30.0),
+                //Age feild
                 child: new TextFormField(
                   keyboardType: TextInputType.number,
                   onSaved: (val) => _age = val,
@@ -132,8 +141,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Please enter your age';
-                    } else if (int.parse(value) >= 60 ||
-                        int.parse(value) < 18) {
+                    }else if(int.parse(value) >= 60 || int.parse(value) < 18){
                       return 'Your age should be between 18 - 60';
                     }
                     return null;
@@ -143,8 +151,7 @@ class _RegisterPageState extends State<RegisterPage> {
             ],
           ),
         ),
-        new Padding(
-          padding: const EdgeInsets.fromLTRB(30.0, 1.0, 30.0, 30.0),
+        new Padding(padding: const EdgeInsets.fromLTRB(30.0, 1.0, 30.0, 30.0),
           child: registerBtn,
         )
       ],
@@ -155,6 +162,7 @@ class _RegisterPageState extends State<RegisterPage> {
         title: new Text("Register"),
       ),
       key: scaffoldKey,
+      //create scrool view
       body: new SingleChildScrollView(
         child: new Container(
           child: new Center(
@@ -165,24 +173,52 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  void _submit() {
+  //onclick method of register button
+  void _submit() async {
     final form = formKey.currentState;
+    //check form validations
     if (form.validate()) {
       setState(() {
         form.save();
-        var user = new User.name(
-            _name, _username, _password, _weight, _gender, _age, null);
-        var db = new DatabaseHelper();
-        db.saveUser(user);
-        scaffoldKey.currentState.showSnackBar(new SnackBar(
-          content: new Text("Registration Success. Please login to system"),
-        ));
-        Future.delayed(const Duration(milliseconds: 1000), () {
-          setState(() {
-            Navigator.of(context).pushNamed("/login");
-          });
-        });
       });
+
+      try {
+        //Add new user to firebase auth
+        UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            email: _email,
+            password: _password
+        );
+        if(userCredential != null){
+          //save other details to realtime database
+          final databaseRef = FirebaseDatabase.instance.reference(); //database reference object
+          databaseRef.child('users').push().set(
+              {'name': _name, 'email': _email, 'weight': _weight, 'gender': _gender, 'age': _age}
+          );
+          _snakbar('Registration Success. Please login to system');
+          Future.delayed(const Duration(milliseconds: 1000), () {
+            setState(() {
+              Navigator.of(context).pushNamed("/login");
+            });
+          });
+        }
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          print('The password provided is too weak.');
+          _snakbar('The password provided is too weak.');
+        } else if (e.code == 'email-already-in-use') {
+          print('The account already exists for that email.');
+          _snakbar('The account already exists for that email.');
+        }
+      } catch (e) {
+        print(e);
+      }
     }
+  }
+
+  //snack ber
+  void _snakbar(String msg){
+    scaffoldKey.currentState.showSnackBar(new SnackBar(
+      content: new Text(msg),
+    ));
   }
 }
