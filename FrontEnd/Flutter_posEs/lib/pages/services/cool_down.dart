@@ -117,15 +117,15 @@ class _RenderCoolDownState extends State<RenderCoolDown> {
         legColor = Colors.red;
       });
     }
-    if (wristAlignment && ankleAlignment && kneeAndHipAlignment) {
+    if (wristAlignment ) {
       setState(() {
         correctColor = Colors.green;
-        memo = 'Warrior position aligned!';
+        memo = 'Cool Down position aligned!';
       });
     } else {
       setState(() {
         correctColor = Colors.red;
-        memo = 'Warrior position not aligned.';
+        memo = 'Cool Down position not aligned.';
       });
     }
   }
