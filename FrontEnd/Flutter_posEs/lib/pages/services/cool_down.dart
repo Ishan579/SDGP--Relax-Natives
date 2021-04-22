@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class RenderCoolDown extends StatefulWidget {
-  final List<dynamic> data; //keypoints
-  final int previewH; //image height (cam image)
-  final int previewW; //image width (cam image)
-  final double screenH; //screen height
-  final double screenW; //screen height
+  final List<dynamic> data;
+  final int previewH;
+  final int previewW;
+  final double screenH;
+  final double screenW;
 
   RenderCoolDown(
       {this.data, this.previewH, this.previewW, this.screenH, this.screenW});
@@ -16,11 +16,11 @@ class RenderCoolDown extends StatefulWidget {
 class _RenderCoolDownState extends State<RenderCoolDown> {
   Map<String, List<double>> inputArr;
 
-  String excercise = 'warrior';
+  String excercise = 'cool down';
   Color correctColor;
   Color armColor, shoulderColor, legColor;
-  String memo = 'Warrior position not aligned.';
-//x y cordinates
+  String memo = 'cool down position not aligned.';
+
   double leftShoulderY,
       rightShoulderY,
       leftWristX,
@@ -31,10 +31,9 @@ class _RenderCoolDownState extends State<RenderCoolDown> {
       rightAnkleX,
       leftKneeY,
       leftHipY;
-//checls of bodyparts are in alignment
 
   bool wristAlignment, shoulderAlignment, ankleAlignment, kneeAndHipAlignment;
-//positions  of body parts (x and y combined)
+
   var leftEyePos = Vector(0, 0);
   var rightEyePos = Vector(0, 0);
   var leftShoulderPos = Vector(0, 0);
@@ -66,15 +65,16 @@ class _RenderCoolDownState extends State<RenderCoolDown> {
 
   void _postureAccordingToExercise(Map<String, List<double>> poses) {
     setState(() {
-      print("printting poses");
-      print(poses);
       leftShoulderY = poses['leftShoulder'][1];
       rightShoulderY = poses['rightShoulder'][1];
       leftWristX = poses['leftWrist'][0];
       leftWristY = poses['leftWrist'][1];
       rightWristX = poses['rightWrist'][0];
       rightWristY = poses['leftWrist'][1];
-
+      leftAnkleX = poses['leftAnkle'][0];
+      rightAnkleX = poses['rightAnkle'][0];
+      leftKneeY = poses['leftKnee'][1];
+      leftHipY = poses['leftHip'][1];
     });
 
     if (leftWristY > 120 &&
@@ -85,32 +85,39 @@ class _RenderCoolDownState extends State<RenderCoolDown> {
         rightWristX > 160) {
       wristAlignment = true;
       setState(() {
-               print("leftWristY should be "+"greater than 120");
-          print("leftWristY is "+  leftWristX.toString() );
-          print("  rightWristY should be "+"greater than 120");
-          print("  rightWristY is "+  rightWristY.toString() );
-          print("  leftWristX should be "+"less than 255");
-          print(" leftWristX "+ leftWristX.toString() );
-          print("leftWristX should be "+"greater than 200");
-          print("leftWristX is "+leftWristX.toString() );
-          print("rightWristX should be "+"less than 255");
-          print("rightWristX is "+    rightWristX.toString() );
-          print("   rightWristX should be "+"greater than 160");
-          print("   rightWristX is "+ rightWristX.toString() );
         armColor = Colors.green;
         shoulderColor = Colors.green;
-        legColor=Colors.green;
       });
     } else {
       wristAlignment = false;
       setState(() {
         armColor = Colors.red;
         shoulderColor = Colors.red;
-        legColor=Colors.red;
       });
     }
-
-    if (wristAlignment) {
+    if (leftAnkleX > 360 && rightAnkleX < 60) {
+      ankleAlignment = true;
+      setState(() {
+        legColor = Colors.green;
+      });
+    } else {
+      ankleAlignment = false;
+      setState(() {
+        legColor = Colors.red;
+      });
+    }
+    if (leftKneeY > 580 && leftHipY > 505) {
+      kneeAndHipAlignment = true;
+      setState(() {
+        //legColor = Colors.green;
+      });
+    } else {
+      kneeAndHipAlignment = false;
+      setState(() {
+        legColor = Colors.red;
+      });
+    }
+    if (wristAlignment && ankleAlignment && kneeAndHipAlignment) {
       setState(() {
         correctColor = Colors.green;
         memo = 'Warrior position aligned!';
@@ -232,14 +239,14 @@ class _RenderCoolDownState extends State<RenderCoolDown> {
             width: 100,
             height: 15,
             child: Container(
-                // child: Text(
-                //   "● ${k["part"]}",
-                //   style: TextStyle(
-                //     color: Color.fromRGBO(37, 213, 253, 1.0),
-                //     fontSize: 12.0,
-                //   ),
-                // ),
-                ),
+              // child: Text(
+              //   "● ${k["part"]}",
+              //   style: TextStyle(
+              //     color: Color.fromRGBO(37, 213, 253, 1.0),
+              //     fontSize: 12.0,
+              //   ),
+              // ),
+            ),
           );
         }).toList();
 

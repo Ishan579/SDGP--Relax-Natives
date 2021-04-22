@@ -247,16 +247,16 @@ class _RenderShoulderPressState extends State<RenderShoulderPress> {
           _getKeyPoints(k, x, y);
 
           if (k["part"] == 'leftEye') {
-            leftEyePos.x = x - 230;
-            leftEyePos.y = y - 45;
+            leftEyePos.x = x - 280;
+            leftEyePos.y = y - 25;
           }
           if (k["part"] == 'rightEye') {
-            rightEyePos.x = x - 230;
-            rightEyePos.y = y - 45;
+            rightEyePos.x = x - 280;
+            rightEyePos.y = y - 25;
           }
           return Positioned(
-            left: x - 230,
-            top: y - 50,
+            left: x - 270,
+            top: y - 20,
             width: 100,
             height: 15,
             child: Container(
