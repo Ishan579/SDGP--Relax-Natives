@@ -86,19 +86,6 @@ class _RenderSquatState extends State<RenderSquat> {
     if (_postureAccordingToExercise(poses)) {
       if (!checkCorrectPosture) {
         setState(() {
-          print("leftShoulder should be "+"less than 320");
-          print("leftShoulder is "+ shoulderLY.toString() );
-          print(" leftShoulder should be "+"greater than 280");
-          print(" leftShoulde is "+ shoulderLY.toString() );
-          print(" rightShoulder should be "+"less than 320");
-          print("rightShoulder "+shoulderRY.toString() );
-          print("rightShoulder should be "+"greater than 280");
-          print("rightShoulder is "+shoulderRY.toString() );
-          print("rightKnee should be "+"greater than 570");
-          print("rightKnee is "+ kneeRY.toString() );
-          print("leftKnee should be "+"greater than 570");
-          print("leftKnee is "+ kneeLY.toString() );
-
           checkCorrectPosture = true;
           correctColor = Colors.green;
         });

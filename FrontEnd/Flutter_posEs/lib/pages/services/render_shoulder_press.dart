@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
-
 class RenderShoulderPress extends StatefulWidget {
-  //an array taken shoulderPress class having X, Y keypoint extractions
   final List<dynamic> xyPointsArray;
-  //height of the camera input
   final int imageHeight;
-  //width of the camera input
   final int imageWidth;
-  //height of the screen input
   final double screenHeight;
-  //width of the screen input
   final double screenWidth;
-  //constructor taking an XY points array , int Image and Screen height and width
+
   RenderShoulderPress(
       {this.xyPointsArray, this.imageHeight, this.imageWidth, this.screenHeight, this.screenWidth});
   @override
@@ -19,15 +13,12 @@ class RenderShoulderPress extends StatefulWidget {
 }
 
 class _RenderShoulderPressState extends State<RenderShoulderPress> {
-  //array to store XY values filtered from the array containing all X and Y values
-  Map<String, List<double>> inputArray;
+  Map<String, List<double>> inputArr;
 
-  String excerciseName = 'shoulder_press';
-  //Y cordinate denoting when the body is raised to the upper limit
-  double upperValue = 300;
-  //Y cordinate denoting when the body is lowered to the lower limit
-  double lowerValue = 500;
-  bool midCount, checkCorrectPosture;
+  String excercise = 'shoulder_press';
+  double upperRange = 300;
+  double lowerRange = 500;
+  bool midCount, isCorrectPosture;
   int _counter;
   Color correctColor;
   double shoulderLY;
@@ -36,38 +27,36 @@ class _RenderShoulderPressState extends State<RenderShoulderPress> {
   double wristLX, wristLY, wristRX, wristRY, elbowLX, elbowRX;
   double kneeRY;
   double kneeLY;
-  bool goUp;
-  //String value explaining the instructions
+  bool squatUp;
   String whatToDo = 'Finding Posture';
 
-  var leftEyePosition = Vector(0, 0);
-  var rightEyePosition = Vector(0, 0);
-  var leftShoulderPosition = Vector(0, 0);
-  var rightShoulderPosition = Vector(0, 0);
-  var leftElbowPosition = Vector(0, 0);
-  var rightElbowPosition = Vector(0, 0);
-  var leftWristPosition = Vector(0, 0);
-  var rightWristPosition = Vector(0, 0);
-  var leftHipPosition = Vector(0, 0);
-  var rightHipPosition = Vector(0, 0);
-  var leftKneePosition = Vector(0, 0);
-  var rightKneePosition = Vector(0, 0);
-  var leftAnklePosition = Vector(0, 0);
-  var rightAnklePosition = Vector(0, 0);
+  var leftEyePos = Vector(0, 0);
+  var rightEyePos = Vector(0, 0);
+  var leftShoulderPos = Vector(0, 0);
+  var rightShoulderPos = Vector(0, 0);
+  var leftHipPos = Vector(0, 0);
+  var rightHipPos = Vector(0, 0);
+  var leftElbowPos = Vector(0, 0);
+  var rightElbowPos = Vector(0, 0);
+  var leftWristPos = Vector(0, 0);
+  var rightWristPos = Vector(0, 0);
+  var leftKneePos = Vector(0, 0);
+  var rightKneePos = Vector(0, 0);
+  var leftAnklePos = Vector(0, 0);
+  var rightAnklePos = Vector(0, 0);
 
   @override
   void initState() {
-    //initislizing the input array
-    inputArray = new Map();
+    inputArr = new Map();
     midCount = false;
-    checkCorrectPosture = false;
+    isCorrectPosture = false;
     _counter = 0;
     correctColor = Colors.red;
     shoulderLY = 0;
     shoulderRY = 0;
     kneeRY = 0;
     kneeLY = 0;
-    goUp = true;
+    squatUp = true;
     super.initState();
   }
 
@@ -85,8 +74,8 @@ class _RenderShoulderPressState extends State<RenderShoulderPress> {
       kneeLY = poses['leftKnee'][1];
       kneeRY = poses['rightKnee'][1];
     });
-    if (excerciseName == 'arm_press') {
-      if (goUp) {
+    if (excercise == 'arm_press') {
+      if (squatUp) {
         return wristLX > 280 &&
             elbowLX > 280 &&
             wristRX < 95 &&
@@ -103,32 +92,16 @@ class _RenderShoulderPressState extends State<RenderShoulderPress> {
 
   _checkCorrectPosture(Map<String, List<double>> poses) {
     if (_postureAccordingToExercise(poses)) {
-      if (!checkCorrectPosture) {
+      if (!isCorrectPosture) {
         setState(() {
-          print("Wrist LX should be "+"greater than 280");
-          print("Wrist LX is "+wristLX.toString() );
-          print("elbow LX should be "+"greater than 280");
-          print("elbow LX is "+elbowLX.toString() );
-          print("Wrist RX should be "+"greater than 95");
-          print("Wrist RX is "+wristLX.toString() );
-          print("elbow RX should be "+"greater than 95");
-          print("elbow RX is "+elbowLX.toString() );
-          print("Wrist LY should be "+"greater than 240");
-          print("Wrist LY is "+wristLX.toString() );
-          print("elbow LY should be "+"greater than 200");
-          print("elbow LY is "+elbowLX.toString() );
-          print("Wrist RY should be "+"greater than 240");
-          print("Wrist RY is "+wristLX.toString() );
-          print("elbow RY should be "+"greater than 200");
-          print("elbow RY is "+elbowLX.toString() );
-          checkCorrectPosture = true;
+          isCorrectPosture = true;
           correctColor = Colors.green;
         });
       }
     } else {
-      if (checkCorrectPosture) {
+      if (isCorrectPosture) {
         setState(() {
-          checkCorrectPosture = false;
+          isCorrectPosture = false;
           correctColor = Colors.red;
         });
       }
@@ -139,21 +112,21 @@ class _RenderShoulderPressState extends State<RenderShoulderPress> {
     if (poses != null) {
       _checkCorrectPosture(poses);
 
-      if (checkCorrectPosture && goUp && midCount == false) {
+      if (isCorrectPosture && squatUp && midCount == false) {
         //in correct initial posture
         setState(() {
           whatToDo = 'Lift';
           //correctColor = Colors.green;
         });
-        goUp = !goUp;
-        checkCorrectPosture = false;
+        squatUp = !squatUp;
+        isCorrectPosture = false;
       }
 
       //lowered all the way
-      if (checkCorrectPosture && !goUp && midCount == false) {
+      if (isCorrectPosture && !squatUp && midCount == false) {
         midCount = true;
-        checkCorrectPosture = false;
-        goUp = !goUp;
+        isCorrectPosture = false;
+        squatUp = !squatUp;
         setState(() {
           whatToDo = 'Drop';
           //correctColor = Colors.green;
@@ -161,10 +134,10 @@ class _RenderShoulderPressState extends State<RenderShoulderPress> {
       }
 
       //back up
-      if (midCount && checkCorrectPosture) {
+      if (midCount && isCorrectPosture) {
         incrementCounter();
         midCount = false;
-        goUp = !goUp;
+        squatUp = !squatUp;
         setState(() {
           whatToDo = 'Lift';
         });
@@ -182,87 +155,86 @@ class _RenderShoulderPressState extends State<RenderShoulderPress> {
   Widget build(BuildContext context) {
     void _getKeyPoints(k, x, y) {
       if (k["part"] == 'leftEye') {
-        leftEyePosition.x = x - 280;
-        leftEyePosition.y = y - 25;
+        leftEyePos.x = x - 280;
+        leftEyePos.y = y - 25;
       }
       if (k["part"] == 'rightEye') {
-        rightEyePosition.x = x - 280;
-        rightEyePosition.y = y - 25;
+        rightEyePos.x = x - 280;
+        rightEyePos.y = y - 25;
       }
       if (k["part"] == 'leftShoulder') {
-        leftShoulderPosition.x = x - 280;
-        leftShoulderPosition.y = y - 25;
+        leftShoulderPos.x = x - 280;
+        leftShoulderPos.y = y - 25;
       }
       if (k["part"] == 'rightShoulder') {
-        rightShoulderPosition.x = x - 280;
-        rightShoulderPosition.y = y - 25;
+        rightShoulderPos.x = x - 280;
+        rightShoulderPos.y = y - 25;
       }
       if (k["part"] == 'leftElbow') {
-        leftElbowPosition.x = x - 280;
-        leftElbowPosition.y = y - 25;
+        leftElbowPos.x = x - 280;
+        leftElbowPos.y = y - 25;
       }
       if (k["part"] == 'rightElbow') {
-        rightElbowPosition.x = x - 280;
-        rightElbowPosition.y = y - 25;
+        rightElbowPos.x = x - 280;
+        rightElbowPos.y = y - 25;
       }
       if (k["part"] == 'leftWrist') {
-        leftWristPosition.x = x - 280;
-        leftWristPosition.y = y - 25;
+        leftWristPos.x = x - 280;
+        leftWristPos.y = y - 25;
       }
       if (k["part"] == 'rightWrist') {
-        rightWristPosition.x = x - 280;
-        rightWristPosition.y = y - 25;
+        rightWristPos.x = x - 280;
+        rightWristPos.y = y - 25;
       }
       if (k["part"] == 'leftHip') {
-        leftHipPosition.x = x - 280;
-        leftHipPosition.y = y - 25;
+        leftHipPos.x = x - 280;
+        leftHipPos.y = y - 25;
       }
       if (k["part"] == 'rightHip') {
-        rightHipPosition.x = x - 280;
-        rightHipPosition.y = y - 25;
+        rightHipPos.x = x - 280;
+        rightHipPos.y = y - 25;
       }
       if (k["part"] == 'leftKnee') {
-        leftKneePosition.x = x - 280;
-        leftKneePosition.y = y - 25;
+        leftKneePos.x = x - 280;
+        leftKneePos.y = y - 25;
       }
       if (k["part"] == 'rightKnee') {
-        rightKneePosition.x = x - 280;
-        rightKneePosition.y = y - 25;
+        rightKneePos.x = x - 280;
+        rightKneePos.y = y - 25;
       }
       if (k["part"] == 'leftAnkle') {
-        leftAnklePosition.x = x - 280;
-        leftAnklePosition.y = y - 25;
+        leftAnklePos.x = x - 280;
+        leftAnklePos.y = y - 25;
       }
       if (k["part"] == 'rightAnkle') {
-        rightAnklePosition.x = x - 280;
-        rightAnklePosition.y = y - 25;
+        rightAnklePos.x = x - 280;
+        rightAnklePos.y = y - 25;
       }
     }
-    //filters x and y body keypints filtered out of the array passed
 
-   List<Widget> _renderKeypoints() {
+    List<Widget> _renderKeypoints() {
       var lists = <Widget>[];
       widget.xyPointsArray.forEach((re) {
         var list = re["keypoints"].values.map<Widget>((k) {
           var _x = k["x"];
           var _y = k["y"];
-          var scaleWidth, scaleHeight, x, y;
+          var scaleW, scaleH, x, y;
 
           if (widget.screenHeight / widget.screenWidth >
               widget.imageHeight / widget.imageWidth) {
-            scaleWidth = widget.screenHeight / widget.imageHeight * widget.imageWidth;
-            scaleHeight = widget.screenHeight;
-            var difW = (scaleWidth - widget.screenWidth) / scaleWidth;
-            x = (_x - difW / 2) * scaleWidth;
-            y = _y * scaleHeight;
+            scaleW = widget.screenHeight / widget.imageHeight * widget.imageWidth;
+            scaleH = widget.screenHeight;
+            var difW = (scaleW - widget.screenWidth) / scaleW;
+            x = (_x - difW / 2) * scaleW;
+            y = _y * scaleH;
           } else {
-            scaleHeight = widget.screenWidth / widget.imageWidth * widget.imageHeight;
-            scaleWidth = widget.screenWidth;
-            var difH = (scaleHeight - widget.screenHeight) / scaleHeight;
-            x = _x * scaleWidth;
-            y = (_y - difH / 2) * scaleHeight;
+            scaleH = widget.screenWidth / widget.imageWidth * widget.imageHeight;
+            scaleW = widget.screenWidth;
+            var difH = (scaleH - widget.screenHeight) / scaleH;
+            x = _x * scaleW;
+            y = (_y - difH / 2) * scaleH;
           }
-          inputArray[k['part']] = [x, y];
+          inputArr[k['part']] = [x, y];
           //Mirroring
           if (x > 320) {
             var temp = x - 320;
@@ -275,32 +247,32 @@ class _RenderShoulderPressState extends State<RenderShoulderPress> {
           _getKeyPoints(k, x, y);
 
           if (k["part"] == 'leftEye') {
-            leftEyePosition.x = x - 280;
-            leftEyePosition.y = y - 25;
+            leftEyePos.x = x - 230;
+            leftEyePos.y = y - 45;
           }
           if (k["part"] == 'rightEye') {
-            rightEyePosition.x = x - 280;
-            rightEyePosition.y = y - 25;
+            rightEyePos.x = x - 230;
+            rightEyePos.y = y - 45;
           }
           return Positioned(
-            left: x - 270,
-            top: y - 20,
+            left: x - 230,
+            top: y - 50,
             width: 100,
             height: 15,
             child: Container(
-                // child: Text(
-                //   "● ${k["part"]}",
-                //   style: TextStyle(
-                //     color: Color.fromRGBO(37, 213, 253, 1.0),
-                //     fontSize: 12.0,
-                //   ),
-                // ),
-                ),
+              // child: Text(
+              //   "● ${k["part"]}",
+              //   style: TextStyle(
+              //     color: Color.fromRGBO(37, 213, 253, 1.0),
+              //     fontSize: 12.0,
+              //   ),
+              // ),
+            ),
           );
         }).toList();
 
-        _countingLogic(inputArray);
-        inputArray.clear();
+        _countingLogic(inputArr);
+        inputArr.clear();
 
         lists..addAll(list);
       });
@@ -315,40 +287,40 @@ class _RenderShoulderPressState extends State<RenderShoulderPress> {
           children: [
             CustomPaint(
               painter:
-                  MyPainter(left: leftShoulderPosition, right: rightShoulderPosition),
+              MyPainter(left: leftShoulderPos, right: rightShoulderPos),
             ),
             CustomPaint(
-              painter: MyPainter(left: leftElbowPosition, right: leftShoulderPosition),
+              painter: MyPainter(left: leftElbowPos, right: leftShoulderPos),
             ),
             CustomPaint(
-              painter: MyPainter(left: leftWristPosition, right: leftElbowPosition),
+              painter: MyPainter(left: leftWristPos, right: leftElbowPos),
             ),
             CustomPaint(
-              painter: MyPainter(left: rightElbowPosition, right: rightShoulderPosition),
+              painter: MyPainter(left: rightElbowPos, right: rightShoulderPos),
             ),
             CustomPaint(
-              painter: MyPainter(left: rightWristPosition, right: rightElbowPosition),
+              painter: MyPainter(left: rightWristPos, right: rightElbowPos),
             ),
             CustomPaint(
-              painter: MyPainter(left: leftShoulderPosition, right: leftHipPosition),
+              painter: MyPainter(left: leftShoulderPos, right: leftHipPos),
             ),
             CustomPaint(
-              painter: MyPainter(left: leftHipPosition, right: leftKneePosition),
+              painter: MyPainter(left: leftHipPos, right: leftKneePos),
             ),
             CustomPaint(
-              painter: MyPainter(left: leftKneePosition, right: leftAnklePosition),
+              painter: MyPainter(left: leftKneePos, right: leftAnklePos),
             ),
             CustomPaint(
-              painter: MyPainter(left: rightShoulderPosition, right: rightHipPosition),
+              painter: MyPainter(left: rightShoulderPos, right: rightHipPos),
             ),
             CustomPaint(
-              painter: MyPainter(left: rightHipPosition, right: rightKneePosition),
+              painter: MyPainter(left: rightHipPos, right: rightKneePos),
             ),
             CustomPaint(
-              painter: MyPainter(left: rightKneePosition, right: rightAnklePosition),
+              painter: MyPainter(left: rightKneePos, right: rightAnklePos),
             ),
             CustomPaint(
-              painter: MyPainter(left: leftHipPosition, right: rightHipPosition),
+              painter: MyPainter(left: leftHipPos, right: rightHipPos),
             ),
           ],
         ),
@@ -378,7 +350,7 @@ class _RenderShoulderPressState extends State<RenderShoulderPress> {
     );
   }
 }
-//class vector holds x and y positions
+
 class Vector {
   double x, y;
   Vector(this.x, this.y);
