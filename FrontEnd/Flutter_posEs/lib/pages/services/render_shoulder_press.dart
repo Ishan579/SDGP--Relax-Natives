@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
 class RenderShoulderPress extends StatefulWidget {
+  //an array taken shoulderPress class having X, Y keypoint extractions
   final List<dynamic> xyPointsArray;
+  //height of the camera input
   final int imageHeight;
+  //width of the camera input
   final int imageWidth;
+  //height of the screen input
   final double screenHeight;
+  //width of the screen input
   final double screenWidth;
-
+  //constructor taking an XY points array , int Image and Screen height and width
   RenderShoulderPress(
       {this.xyPointsArray, this.imageHeight, this.imageWidth, this.screenHeight, this.screenWidth});
   @override
@@ -14,10 +19,13 @@ class RenderShoulderPress extends StatefulWidget {
 }
 
 class _RenderShoulderPressState extends State<RenderShoulderPress> {
+  //array to store XY values filtered from the array containing all X and Y values
   Map<String, List<double>> inputArray;
 
   String excerciseName = 'shoulder_press';
+  //Y cordinate denoting when the body is raised to the upper limit
   double upperValue = 300;
+  //Y cordinate denoting when the body is lowered to the lower limit
   double lowerValue = 500;
   bool midCount, checkCorrectPosture;
   int _counter;
@@ -29,6 +37,7 @@ class _RenderShoulderPressState extends State<RenderShoulderPress> {
   double kneeRY;
   double kneeLY;
   bool goUp;
+  //String value explaining the instructions
   String whatToDo = 'Finding Posture';
 
   var leftEyePosition = Vector(0, 0);
@@ -48,6 +57,7 @@ class _RenderShoulderPressState extends State<RenderShoulderPress> {
 
   @override
   void initState() {
+    //initislizing the input array
     inputArray = new Map();
     midCount = false;
     checkCorrectPosture = false;
@@ -228,6 +238,7 @@ class _RenderShoulderPressState extends State<RenderShoulderPress> {
         rightAnklePosition.y = y - 25;
       }
     }
+    //filters x and y body keypints filtered out of the array passed
 
    List<Widget> _renderKeypoints() {
       var lists = <Widget>[];
@@ -367,7 +378,7 @@ class _RenderShoulderPressState extends State<RenderShoulderPress> {
     );
   }
 }
-
+//class vector holds x and y positions
 class Vector {
   double x, y;
   Vector(this.x, this.y);
